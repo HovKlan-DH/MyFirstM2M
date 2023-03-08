@@ -1,3 +1,23 @@
+-- Dennis' notes
+--
+-- /root/Xilinx/Vivado/2022.2/bin/vivado
+-- ./bit2core mega65r3 CORE-R3.runs/impl_1/CORE_R3.bit MyFirstM2M V1 mfm2m.cor
+--
+-- OPTM_SIZE   = number of lines in menu, excluding frame
+-- OPTM_DX     = number of characters in menu, excluding frame
+-- 15 menues selectable
+-- Font for frame is Anikki-16x16
+-- https://dwarffortresswiki.org/Tileset_repository#Anikki_square_16x16.png
+--
+-- Changing anything in menus then check:
+-- OPTM_SIZE
+-- OPTM_ITEMS
+-- OPTM_GROUPS
+--
+-- Keyboard repeat delay
+-- M2M$TYPEMATIC_DLY
+--
+
 ----------------------------------------------------------------------------------
 -- MiSTer2MEGA65 Framework
 --
@@ -308,40 +328,37 @@ constant OPTM_S_SAVING     : string := "<Saving>";       -- the internal write c
 --             Do use a lower case \n. If you forget one of them or if you use upper case, you will run into undefined behavior.
 --          2. Start each line that contains an actual menu item (multi- or single-select) with a Space character,
 --             otherwise you will experience visual glitches.
-constant OPTM_SIZE         : natural := 27;  -- amount of items including empty lines:
+--constant OPTM_SIZE         : natural := 27;  -- amount of items including empty lines:
+constant OPTM_SIZE         : natural := 23;  -- amount of items including empty lines:
                                              -- needs to be equal to the number of lines in OPTM_ITEMS and amount of items in OPTM_GROUPS
                                              -- IMPORTANT: If SAVE_SETTINGS is true and OPTM_SIZE changes: Make sure to re-generate and
                                              -- and re-distribute the config file. You can make a new one using M2M/tools/make_config.sh
 
 -- Net size of the Options menu on the screen in characters (excluding the frame, which is hardcoded to two characters)
 -- We advise to use OPTM_SIZE as height, but there might be reasons for you to change it.
-constant OPTM_DX           : natural := 23;
+constant OPTM_DX           : natural := 30;
 constant OPTM_DY           : natural := OPTM_SIZE;
                                              
 constant OPTM_ITEMS        : string :=
 
-   " Demo Headline A\n"     &
-   "\n"                     & 
-   " Item A.1\n"            &
+   " Dennis Headline ABC\n"     &
+   " Item B.X\n"            &
    " Item A.2\n"            &
    " Item A.3\n"            &
    " Item A.4\n"            &
    "\n"                     &
    " HDMI Mode\n"           &
-   "\n"                     &
    " 720p 50 Hz 16:9\n"     &
    " 720p 60 Hz 16:9\n"     &
    " 576p 50 Hz 4:3\n"      &
    " 576p 50 Hz 5:4\n"      &
    "\n"                     &
    " Drives\n"              &
-   "\n"                     &
    " Drive X:%s\n"          &
    " Drive Y:%s\n"          &
    " Drive Z:%s\n"          &
    "\n"                     &
    " Another Headline\n"    &
-   "\n"                     &
    " HDMI: CRT emulation\n" &
    " HDMI: Zoom-in\n"       &
    " Audio improvements\n"  &
@@ -367,27 +384,23 @@ constant OPTM_G_Audio      : integer := 8;
 -- make sure that you have exactly the same amount of entries here than in OPTM_ITEMS and defined by OPTM_SIZE
 type OPTM_GTYPE is array (0 to OPTM_SIZE - 1) of integer range 0 to 65535;
 constant OPTM_GROUPS       : OPTM_GTYPE := ( OPTM_G_TEXT + OPTM_G_HEADLINE,            -- Headline "Demo Headline"
-                                             OPTM_G_LINE,                              -- Line
                                              OPTM_G_Demo_A + OPTM_G_START,             -- Item A.1, cursor start position
                                              OPTM_G_Demo_A + OPTM_G_STDSEL,            -- Item A.2, selected by default
                                              OPTM_G_Demo_A,                            -- Item A.3
                                              OPTM_G_Demo_A,                            -- Item A.4
                                              OPTM_G_LINE,                              -- Line
-                                             OPTM_G_TEXT,                              -- Headline "HDMI Mode"
-                                             OPTM_G_LINE,                              -- Line
+                                             OPTM_G_TEXT + OPTM_G_HEADLINE,            -- Headline "HDMI Mode"
                                              OPTM_G_HDMI + OPTM_G_STDSEL,              -- 720p 50 Hz 16:9, selected by default
                                              OPTM_G_HDMI,                              -- 720p 60 Hz 16:9
                                              OPTM_G_HDMI,                              -- 576p 50 Hz 4:3
                                              OPTM_G_HDMI,                              -- 576p 50 Hz 5:4
                                              OPTM_G_LINE,                              -- Line
                                              OPTM_G_TEXT,                              -- Headline "Drives"
-                                             OPTM_G_LINE,                              -- Line
                                              OPTM_G_Drive_X + OPTM_G_MOUNT_DRV,        -- Drive X
                                              OPTM_G_Drive_Y + OPTM_G_MOUNT_DRV,        -- Drive Y
                                              OPTM_G_Drive_Z + OPTM_G_MOUNT_DRV,        -- Drive Z
                                              OPTM_G_LINE,                              -- Line
-                                             OPTM_G_TEXT,                              -- Headline "Another Headline"
-                                             OPTM_G_LINE,                              -- Line
+                                             OPTM_G_TEXT + OPTM_G_HEADLINE,            -- Headline "Another Headline"
                                              OPTM_G_CRT     + OPTM_G_SINGLESEL,        -- On/Off toggle ("Single Select")
                                              OPTM_G_Zoom    + OPTM_G_SINGLESEL,        -- On/Off toggle ("Single Select")
                                              OPTM_G_Audio   + OPTM_G_SINGLESEL,        -- On/Off toggle ("Single Select")
