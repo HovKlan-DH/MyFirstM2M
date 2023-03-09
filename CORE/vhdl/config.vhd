@@ -329,7 +329,7 @@ constant OPTM_S_SAVING     : string := "<Saving>";       -- the internal write c
 --          2. Start each line that contains an actual menu item (multi- or single-select) with a Space character,
 --             otherwise you will experience visual glitches.
 --constant OPTM_SIZE         : natural := 27;  -- amount of items including empty lines:
-constant OPTM_SIZE         : natural := 23;  -- amount of items including empty lines:
+constant OPTM_SIZE         : natural := 21;  -- amount of items including empty lines:
                                              -- needs to be equal to the number of lines in OPTM_ITEMS and amount of items in OPTM_GROUPS
                                              -- IMPORTANT: If SAVE_SETTINGS is true and OPTM_SIZE changes: Make sure to re-generate and
                                              -- and re-distribute the config file. You can make a new one using M2M/tools/make_config.sh
@@ -361,9 +361,7 @@ constant OPTM_ITEMS        : string :=
    " Another Headline\n"    &
    " HDMI: CRT emulation\n" &
    " HDMI: Zoom-in\n"       &
-   " Audio improvements\n"  &
-   "\n"                     &
-   " Close Menu\n";
+   " Audio improvements\n";
         
 -- define your own constants here and choose meaningful names
 -- make sure that your first group uses the value 1 (0 means "no menu item", such as text and line),
@@ -395,7 +393,7 @@ constant OPTM_GROUPS       : OPTM_GTYPE := ( OPTM_G_TEXT + OPTM_G_HEADLINE,     
                                              OPTM_G_HDMI,                              -- 576p 50 Hz 4:3
                                              OPTM_G_HDMI,                              -- 576p 50 Hz 5:4
                                              OPTM_G_LINE,                              -- Line
-                                             OPTM_G_TEXT,                              -- Headline "Drives"
+                                             OPTM_G_TEXT + OPTM_G_HEADLINE,            -- Headline "Drives"
                                              OPTM_G_Drive_X + OPTM_G_MOUNT_DRV,        -- Drive X
                                              OPTM_G_Drive_Y + OPTM_G_MOUNT_DRV,        -- Drive Y
                                              OPTM_G_Drive_Z + OPTM_G_MOUNT_DRV,        -- Drive Z
@@ -403,9 +401,7 @@ constant OPTM_GROUPS       : OPTM_GTYPE := ( OPTM_G_TEXT + OPTM_G_HEADLINE,     
                                              OPTM_G_TEXT + OPTM_G_HEADLINE,            -- Headline "Another Headline"
                                              OPTM_G_CRT     + OPTM_G_SINGLESEL,        -- On/Off toggle ("Single Select")
                                              OPTM_G_Zoom    + OPTM_G_SINGLESEL,        -- On/Off toggle ("Single Select")
-                                             OPTM_G_Audio   + OPTM_G_SINGLESEL,        -- On/Off toggle ("Single Select")
-                                             OPTM_G_LINE,                              -- Line
-                                             OPTM_G_CLOSE                              -- Close Menu
+                                             OPTM_G_Audio   + OPTM_G_SINGLESEL         -- On/Off toggle ("Single Select")
                                            );
 
 --------------------------------------------------------------------------------------------------------------------

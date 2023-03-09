@@ -77,49 +77,53 @@ M2M$SA_INVERSE      .EQU 0x80
 M2M$SA_DARK         .EQU 0x40
 M2M$SA_BG_RED       .EQU 0x20
 M2M$SA_BG_GREEN     .EQU 0x10
-;M2M$SA_BG_BLUE      .EQU 0x08
-M2M$SA_BG_BLUE      .EQU 0x00 ; black
+M2M$SA_BG_BLUE      .EQU 0x08
 M2M$SA_FG_RED       .EQU 0x04
 M2M$SA_FG_GREEN     .EQU 0x02
 M2M$SA_FG_BLUE      .EQU 0x01
 
 ; Screen attributes: Common bit-combinations
 ;M2M$SA_COL_STD      .EQU 0x0B   ; cyan font on blue background
-M2M$SA_COL_STD      .EQU 0x07   ; lighgrey font on blue background, 4-bit, https://www.fountainware.com/EXPL/vga_color_palettes.htm
-M2M$SA_COL_STD_INV  .EQU 0x8B   ; inverse standard
-M2M$SA_COL_TTLE     .EQU 0x0E   ; Title: Yellow on blue background
-M2M$SA_COL_TTLE_INV .EQU 0x8E   ; inverse Title
-M2M$SA_COL_SEL      .EQU 0x0F   ; selection: white font on blue background
+;M2M$SA_COL_STD_INV  .EQU 0x8B   ; inverse standard
+;M2M$SA_COL_TTLE     .EQU 0x0E   ; Title: Yellow on blue background
+;M2M$SA_COL_TTLE_INV .EQU 0x8E   ; inverse Title
+;M2M$SA_COL_SEL      .EQU 0x0F   ; selection: white font on blue background
+M2M$SA_COL_STD      .EQU 0x47   ; Default menu: DARK WHITE text on BLACK background
+M2M$SA_COL_STD_INV  .EQU 0x07   ; Cursor line: BLACK text on DARK WHITE background
+M2M$SA_COL_TTLE     .EQU 0x46   ; Title: DARK YELLOW text on BLACK background
+M2M$SA_COL_TTLE_INV .EQU 0x16   ; Title, inversed: YELLOW text on GREEN background - don't know where this is used, so this color will catch my eye :-)
+M2M$SA_COL_SEL      .EQU 0x96   ; Selection: GREEN text on YELLOW background - don't know where this is used, so this color will catch my eye :-)
 
 ; Special characters in font Anikki-16x16
 ;M2M$FC_TL           .EQU 201    ; fat top/left corner
-M2M$FC_TL           .EQU 218    ; thin top/left corner
 ;M2M$FC_SH           .EQU 205    ; fat straight horizontal
-M2M$FC_SH           .EQU 196    ; thin straight horizontal
 ;M2M$FC_TR           .EQU 187    ; fat top/right corner
-M2M$FC_TR           .EQU 191    ; thin top/right corner
 ;M2M$FC_SV           .EQU 186    ; fat straight vertical
-M2M$FC_SV           .EQU 179    ; thin straight vertical
 ;M2M$FC_BL           .EQU 200    ; fat bottom/left corner
-M2M$FC_BL           .EQU 192    ; thin bottom/left corner
 ;M2M$FC_BR           .EQU 188    ; fat bottom/right corner
-M2M$FC_BR           .EQU 217    ; thin bottom/right corner
 ;M2M$FC_HE_LEFT      .EQU 185    ; fat straight horiz. line ends: left part
-M2M$FC_HE_LEFT      .EQU 195    ; thin straight horiz. line ends: left part
 ;M2M$FC_HE_RIGHT     .EQU 204    ; fat straight horiz. line ends: right part
+;M2M$NC_VE_LEFT      .EQU 199    ; normal vertical line end: left part
+;M2M$NC_VE_RIGHT     .EQU 182    ; normal vertical line end: right part
+;M2M$DIR_L           .EQU 17     ; left char for displaying a directory
+;M2M$DIR_R           .EQU 16     ; right char for displaying a directory
+;M2M$OPT_SEL_MULTI   .EQU 7      ; selection char for options menu: multi-sel.
+;M2M$OPT_SEL_SINGLE  .EQU 61     ; ditto for single select
+M2M$FC_TL           .EQU 218    ; thin top/left corner
+M2M$FC_SH           .EQU 196    ; thin straight horizontal
+M2M$FC_TR           .EQU 191    ; thin top/right corner
+M2M$FC_SV           .EQU 179    ; thin straight vertical
+M2M$FC_BL           .EQU 192    ; thin bottom/left corner
+M2M$FC_BR           .EQU 217    ; thin bottom/right corner
+M2M$FC_HE_LEFT      .EQU 195    ; thin straight horiz. line ends: left part
 M2M$FC_HE_RIGHT     .EQU 180    ; thin straight horiz. line ends: right part
 M2M$NC_SH           .EQU 196    ; normal straight horizontal
-;M2M$NC_VE_LEFT      .EQU 199    ; normal vertical line end: left part
 M2M$NC_VE_LEFT      .EQU 195    ; normal vertical line end: left part
-;M2M$NC_VE_RIGHT     .EQU 182    ; normal vertical line end: right part
 M2M$NC_VE_RIGHT     .EQU 180    ; normal vertical line end: right part
-;M2M$DIR_L           .EQU 17     ; left char for displaying a directory
 M2M$DIR_L           .EQU 16     ; left char for displaying a directory
-;M2M$DIR_R           .EQU 16     ; right char for displaying a directory
 M2M$DIR_R           .EQU 17     ; right char for displaying a directory
 M2M$OPT_SEL_MULTI   .EQU 7      ; selection char for options menu: multi-sel.
-;M2M$OPT_SEL_SINGLE  .EQU 61     ; ditto for single select
-M2M$OPT_SEL_SINGLE  .EQU 251     ; ditto for single select, show a checkmark
+M2M$OPT_SEL_SINGLE  .EQU 251    ; ditto for single select, show a checkmark
 
 ; ----------------------------------------------------------------------------
 ; HDMI: Avalon Scaler (ascal.vhd)
