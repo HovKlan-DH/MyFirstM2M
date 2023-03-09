@@ -2,7 +2,7 @@
 git status		- check differences and if pull/push is needed
 git add file.txt	- to add file to GitHub
 git rm file.txt		- to delete file from GitHub
-git commit		- will create changelog text for specific commit
+git commit -a		- will add files and create changelog text for specific commit
 git push		- push changes
 
 gh auth login		- reauth login to GitHub (remembers credentials) - use access token
