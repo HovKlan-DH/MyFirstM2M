@@ -9,9 +9,4 @@ git push		- push changes
 gh auth login		- reauth login to GitHub (remembers credentials) - use access token
 
 
-23:20 nu
-
-dsdd
-sdfsdfd
-
-dfgdfg
+00:04
