@@ -1,6 +1,7 @@
 
 git status		- check differences and if pull/push is needed
 git add file.txt	- to add file to GitHub
+git add -A		- to add ALL files
 git rm file.txt		- to delete file from GitHub
 git commit -a		- will add files and create changelog text for specific commit
 git push		- push changes
