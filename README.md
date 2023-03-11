@@ -5,4 +5,4 @@ This project is taken directly from https://github.com/sy2002/MiSTer2MEGA65/ and
 
 I have made a color schema picker for this and it is available here, http://howto.dk/MiSTer2MEGA65-Color-Schema/
 
-23:21 nu
+23:59 nu
