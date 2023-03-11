@@ -120,8 +120,8 @@ M2M$FC_HE_RIGHT     .EQU 180    ; thin straight horiz. line ends: right part
 M2M$NC_SH           .EQU 196    ; normal straight horizontal
 M2M$NC_VE_LEFT      .EQU 195    ; normal vertical line end: left part
 M2M$NC_VE_RIGHT     .EQU 180    ; normal vertical line end: right part
-M2M$DIR_L           .EQU 16     ; left char for displaying a directory
-M2M$DIR_R           .EQU 17     ; right char for displaying a directory
+M2M$DIR_L           .EQU 3      ; left char for displaying a directory
+M2M$DIR_R           .EQU 2      ; right char for displaying a directory
 M2M$OPT_SEL_MULTI   .EQU 7      ; selection char for options menu: multi-sel.
 M2M$OPT_SEL_SINGLE  .EQU 251    ; ditto for single select, show a checkmark
 

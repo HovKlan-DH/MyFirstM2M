@@ -17,6 +17,24 @@
 -- Keyboard repeat delay
 -- M2M$TYPEMATIC_DLY
 --
+-- Chars from 0-255:
+--   "☺☻♥♦♣♠•◘○◙♂♀♪♫☼\n" &
+--   "►◄↕‼¶§▬↨↑↓→←∟↔▲▼\n" &
+--   " !#$%&'()*+,-./\n" &
+--   "0123456789:;<=>?\n" &
+--   "@ABCDEFGHIJKLMNO\n" &
+--   "PQRSTUVWXYZ[\]^_\n" &
+--   "`abcdefghijklmno\n" &
+--   "pqrstuvwxyz{|}~⌂\n" &
+--   "ÇüéâäàåçêëèïîìÄÅ\n" &
+--   "É¢ÆôöòûùÿÖÜ¢£¥₧ƒ\n" &
+--   "áíóúñÑªº¿⌐¬½¼¡«»\n" &
+--   "░▒▓│┤╡╢╖╕╣║╗╝╜╛╡\n" &
+--   "└┴┬├─┼╞╟╚╔╩╦╠═╬╧\n" &
+--   "╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀\n" &
+--   "αßΓπΣσµτΦΘΩδ∞φε∩\n" &
+--   "≡±≥≤⌠⌡÷≈°∙·√ⁿ²≤\n" &
+--
 
 ----------------------------------------------------------------------------------
 -- MiSTer2MEGA65 Framework
@@ -102,19 +120,23 @@ constant SCR_WELCOME : string :=
    -- We are not insisting. But it would be nice if you gave us credit for MiSTer2MEGA65 by leaving these lines in
    "Powered by MiSTer2MEGA65 Version [WIP],\n" &
    "done by sy2002 and MJoergen in 2022\n" &
+   "\n" &
+   "\n" &
+   "\n" &
 
-   "\n\nEdit config.vhd to modify welcome screen.\n\n" &
-   "You can for example show the keyboard map.\n" &
-   "Look at this example for the Demo core:\n\n\n" &
+   " !#$%&'()*+,-./\n" &
+   "0123456789:;<=>?\n" &
+   "@ABCDEFGHIJKLMNO\n" &
+   "PQRSTUVWXYZ[\]^_\n" &
+   "`abcdefghijklmno\n" &
+   "pqrstuvwxyz{|}\n" &
+   "\n" &
+   "\n" &
+   "£$´¨§~½\n" &
+   "\n" &
+   "\n" &
 
-   "    Key                Demo core\n" & 
-   "    " & CHR_LINE_10 & CHR_LINE_10 & CHR_LINE_10 & CHR_LINE_1 & CHR_LINE_1 & "\n" &
-   "    Left Cursor        Paddle left\n" &
-   "    Right Cursor       Paddle right\n" &
-   "    Space              Start game\n" &
-   "    Help               Options menu\n\n\n" &
-
-   "\n\n    Press Space to continue.\n\n\n";
+   "\n         Press SPACE to continue\n";
    
 constant HELP_1 : string :=
 
@@ -341,27 +363,27 @@ constant OPTM_DY           : natural := OPTM_SIZE;
                                              
 constant OPTM_ITEMS        : string :=
 
-   " Dennis Headline ABC\n"     &
+   " Single Selector\n"     &
    " Item B.X\n"            &
    " Item A.2\n"            &
    " Item A.3\n"            &
    " Item A.4\n"            &
    "\n"                     &
    " HDMI Mode\n"           &
-   " 720p 50 Hz 16:9\n"     &
-   " 720p 60 Hz 16:9\n"     &
-   " 576p 50 Hz 4:3\n"      &
-   " 576p 50 Hz 5:4\n"      &
+   " 720p 50Hz 16:9\n"      &
+   " 720p 60Hz 16:9\n"      &
+   " 576p 50Hz 4:3\n"       &
+   " 576p 50Hz 5:4\n"       &
    "\n"                     &
    " Drives\n"              &
    " Drive X:%s\n"          &
    " Drive Y:%s\n"          &
    " Drive Z:%s\n"          &
    "\n"                     &
-   " Another Headline\n"    &
-   " HDMI: CRT emulation\n" &
-   " HDMI: Zoom-in\n"       &
-   " Audio improvements\n";
+   " Display & Audio\n"    &
+   " HDMI: CRT Emulation\n" &
+   " HDMI: Zoom-In\n"       &
+   " Audio Improvements\n";
         
 -- define your own constants here and choose meaningful names
 -- make sure that your first group uses the value 1 (0 means "no menu item", such as text and line),
