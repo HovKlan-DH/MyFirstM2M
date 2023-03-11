@@ -7,6 +7,3 @@ git commit -a		- will add files and create changelog text for specific commit
 git push			- push changes
 
 gh auth login		- reauth login to GitHub (remembers credentials) - use access token
-
-
-00:08
