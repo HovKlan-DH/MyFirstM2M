@@ -1,0 +1,88 @@
+.\" -*- nroff -*-
+.\"
+.\" psfs2mda.1: psfs2mda man page
+.\" Copyright (c) 2008 John Elliott
+.\"
+.\"
+.\"
+.\" psftools: Manipulate console fonts in the .PSF format
+.\" Copyright (C) 2005, 2007  John Elliott
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.TH psfs2mda 1 "22 January, 2020" "Version 1.1.1" "PSF Tools"
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH NAME
+psfs2mda - extract the font from a dump of the IBM PC MDA ROM
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SYNOPSIS
+.PD 0
+.B psfs2mda
+.RI [ "--compaq" ]
+.RI [ "--comment=text" ]
+INPUT14 INPUT8
+.RI [ INPUT8_ALT ]
+OUTPUTFILE 
+.P
+.PD 1
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH DESCRIPTION
+psfs2mda generates an MDA character ROM image from two or three PSF-format 
+screen fonts. The output file can be used to create a new character ROM for
+an original IBM CGA or MDA, or (with the --compaq option) a Compaq CGA.
+.LP 
+You must supply either two or three input files. The first file is used for 
+the 14-pixel font, the second for the 8-pixel font, and the third, if 
+present, for the alternative (thin) 8-pixel font. If the third file is not
+present, psfs2mda will attempt to use characters 256-511 of the second file.
+If the second file only has 256 characters, the alternative 8-pixel font will 
+be the same as the main 8-pixel font.
+.LP
+Note that the physical ROM chip used in an IBM MDA or CGA is a 9264, with a 
+pinout which differs from the normal 27xx range.
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH OPTIONS
+.TP
+.B --compaq
+Output a ROM image suitable for the Compaq Portable/Deskpro CGA, rather than
+the IBM MDA/CGA.
+.TP
+.B --comment=message
+When outputting in Compaq format, it is possible to embed a message (usually
+a copyright message) in unused bytes of the ROM. This option sets the message 
+to include.
+.\"
+.\"------------------------------------------------------------------
+.\"
+.\".SH BUGS
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SEE ALSO
+psf2raw(1), mda2psf(1)
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH AUTHOR
+John Elliott <seasip.webmaster@gmail.com>.
+.PP

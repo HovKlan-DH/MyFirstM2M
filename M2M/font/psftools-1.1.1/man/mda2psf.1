@@ -1,0 +1,78 @@
+.\" -*- nroff -*-
+.\"
+.\" mda2psf.1: mda2psf man page
+.\" Copyright (c) 2005, 2007 John Elliott
+.\"
+.\"
+.\"
+.\" psftools: Manipulate console fonts in the .PSF format
+.\" Copyright (C) 2005, 2007  John Elliott
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.TH mda2psf 1 "22 January, 2020" "Version 1.1.1" "PSF Tools"
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH NAME
+mda2psf - extract the font from a dump of the IBM PC MDA ROM
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SYNOPSIS
+.PD 0
+.B mda2psf
+.RI [ "--codepage=page" ]
+.RI [ "--compaq" ]
+.RI [ INPUTFILE 
+.RI [ OUTPUTFILE ]]
+.P
+.PD 1
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH DESCRIPTION
+mda2psf converts the 14-pixel font in the character ROM used by IBM's MDA and
+CGA video cards to PC Screen Font format. raw2psf(1) can handle most ROM dumps
+(including the two 8-pixel fonts in this ROM), but the 14-pixel font requires
+a specialised utility.
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH OPTIONS
+.TP
+.B --codepage=page
+Add a Unicode directory for the specified codepage, which can be 
+identified by number or name. The original MDA ROM used codepage
+437. See psfpages(1) for a list of valid codepage names.
+.TP
+.B --compaq
+Assume the input file is in the format used by the Compaq CGA ROM, not the 
+IBM MDA/CGA ROM.
+.\"
+.\"------------------------------------------------------------------
+.\"
+.\".SH BUGS
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SEE ALSO
+psfs2mda(1), raw2psf(1), psfpages(1)
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH AUTHOR
+John Elliott <seasip.webmaster@gmail.com>.
+.PP

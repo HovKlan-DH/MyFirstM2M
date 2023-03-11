@@ -1,0 +1,84 @@
+.\" -*- nroff -*-
+.\"
+.\" vfont2ppm.1: vfont2ppm man page
+.\" Copyright (c) 2005, 2007, 2021 John Elliott
+.\"
+.\"
+.\"
+.\" psftools: Manipulate console fonts in the .PSF format
+.\" Copyright (C) 2005, 2007, 2021  John Elliott
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.TH vfont2ppm 1 "22 January, 2021" "Version 1.1.1" "PSF Tools"
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH NAME
+vfont2ppm - convert a vfont or vfont2 file to a portable bitmap
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SYNOPSIS
+.PD 0
+.B vfont2ppm
+.RI [ "-across=columns" ]
+.RI [ "-align" ]
+.RI [ INPUTFILE 
+.RI [ OUTPUTFILE ]]
+.P
+.PD 1
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH DESCRIPTION
+vfont2ppm converts a font in the .PSF format to a Portable PixMap image
+showing all its characters, 32 (by default) to a line. This allows vfont
+files to be previewed easily - just pipe them to "vfont2ppm | xv -".
+.PP
+In the resulting image, the character's baseline point will be shown in red,
+with the horizontal and vertical baselines in green. If the baseline point 
+is outside the character bitmap, the space between it and the bitmap will
+be shown in yellow.
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH OPTIONS
+.TP
+.B --across=columns
+Set the number of columns to display (32 by default). The count of rows
+will be derived from the count of columns.
+.B --align
+By default, the character bitmaps are shown with no attempt to align them
+horizontally or vertically - so a character with a descender, like "p", may
+appear at different height from one without, like "o". If the
+.I --align
+option is present, their horizontal and vertical basepoints will be aligned
+to a grid. This may result in more white space between the bitmaps.
+.\"
+.\"------------------------------------------------------------------
+.\"
+.\".SH BUGS
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SEE ALSO
+xv(1), psf2xbm(1)
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH AUTHOR
+John Elliott <seasip.webmaster@gmail.com>.
+.PP

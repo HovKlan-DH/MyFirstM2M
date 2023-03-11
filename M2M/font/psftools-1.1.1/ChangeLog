@@ -1,0 +1,241 @@
+2021-01-22 John Elliott
+
+	* psftools-1.1.1 released.
+	* Core functions added to support the Berkeley Unix vfont format,
+	 a variable-width font format that otherwise has similar 
+	 capabilities to PSF1.
+	* Also supports a new 'vfont2' format, aiming at lossless conversion
+	 PSF2 -> vfont2 -> PSF2.
+	* New utilities to support vfont: psf2vfont, vfont2psf, txt2vfont, 
+	 vfont2txt, vfont2ppm.
+
+2021-01-12 John Elliott
+
+	* psftools-1.1.0 released.
+	* ams2psf, psf2ams: Now support SCRCHAR.JOY, the LocoScript screen 
+	          font file.
+	* psf2ams: A short .PSF font converted to a .COM file will now only
+	          redefine those characters defined by the .PSF font.
+	
+
+2020-12-22 John Elliott
+
+	* Support added for (internal and external) code page mappings
+	 with more than 256 characters. The format of the .CP2 files used
+	 to hold these mappings has been changed accordingly.
+	* Codepage names are now matched case-insensitively.
+	* New codepages: LS3 (LocoScript 3), QX10 (Epson QX-10) and PRINTIT 
+	 (MML Systems Printit, a subset of QX10)
+	* raw2psf: Bugfix: --codepage was not setting the Unicode mapping on 
+		the last character in the font.
+	* psf2ams: If passed an 8x16 font, the self-loading COM file now
+		  loads it at full height on the PCW16 (and scales it down
+		  on other computers).
+	* psf2xbm: Added an --across option allowing the width of the output
+	 bitmap to be changed (height is adjusted to match).
+
+2020-12-07 John Elliott
+
+	* psftools-1.0.14 released.
+
+	* New programs: psf2ams and ams2psf, allowing generation of 
+			self-loading fonts and/or custom EMS files for 
+			Amstrad CP/M computers.
+
+2019-07-05 John Elliott
+
+	* psftools-1.0.13 released.
+
+2019-05-17 John Elliott
+
+	* zx2psf: Added 'move1' mode to zx2psf - like 'bare' but remaps the
+	         pound and copyright to their ISO-8859-1 positions. [Damien 
+		 Guard]
+
+2019-03-19 John Elliott
+
+	* psftools-1.0.12 released.
+
+	* fnt2psf: Changed the Windows 1.x font extract to seek to the
+	 character bitmap rather than assuming it directly follows the
+	 widths table.
+
+2017-03-17 John Elliott
+
+	* cpi2psf: Was unable to parse LCD.CPI from Toshiba MS-DOS 3.30, 
+		 which is slightly out of spec.
+	* Updated GEM codepage now that there's a Unicode dingbat for 'bell'.
+	 (U+1F514).
+
+2012-01-81 John Elliott
+
+	* loadpsf: Support for Wang PC colour and mono video cards. Does
+		  not support 'CGDC' or 'IBM emulation' card types.
+
+2010-11-14 John Elliott
+
+	* Updated build scripts to a more recent autoconf / automake.
+
+2009-05-03 John Elliott
+
+	* loadpsf: Added support for Compaq Portable plasma displays.
+
+2008-06-21 John Elliott
+
+	* psftools-1.0.8 released.
+	* psfs2mda: Created new utility to build an MDA character ROM image.
+	* mda2psf: Added a --compaq option to match the --compaq option in
+		psfs2mda(1).
+
+2008-04-11 John Elliott
+
+	* psftools-1.0.7 released.
+
+	* Codepages: The PPCGREEK codepage had the two lower-case sigmas the
+	 wrong way round. Various other corrections made to the PPCGREEK and
+	 PPC860 codepages.
+
+2008-01-26 John Elliott
+
+	* psf2bbc: Converts a PSF font to a BBC Micro soft font.
+	* bbc2psf: Reverses psf2bbc; converts a BBC Micro soft font to PSF.
+	* The BBCMICRO codepage now covers characters 32-255.
+
+2008-01-23 John Elliott
+
+	* psftools-1.0.6 released.
+
+2007-12-29 John Elliott
+
+	* psf2bsd: Converts a PSF to a BSD 'wsfont' kernel header.
+
+2007-06-20 John Elliott
+
+	* wyse2psf: Reverses psf2wyse; converts a Wyses soft font to PSF.
+	* psf2wyse: New utility to convert a PSF to a soft font that can be
+		   uploaded into a Wyse-60 or compatible terminal.
+
+2007-01-29 John Elliott
+
+	* psftools-1.0.5 released.
+
+	* Corrected some documentation problems.
+
+2006-10-14 John Elliott
+
+	* cpi2psf: Changed the CPI loader so that it tries to detect 
+	 and accommodate codepages that contain segment:offset pointers 
+	 rather than 32-bit offsets.
+
+2006-07-04 John Elliott
+
+	* codepages: Updated ISO-8859-7 to match the current unicode.org
+	 mapping rather than the previous Linux one.
+
+2006-06-20 John Elliott
+
+	* codepages: More corrections to the 'amstrad' codepage.
+	* psfxform: Corrected a crash which occurred if --strip and --psf1
+	 were both applied to a Unicode PSF2.
+
+2006-06-18 John Elliott
+
+	* psftools-1.0.4 released.
+
+2006-06-17 John Elliott
+
+	* psfs2cpi: Added the ability to override what mapping is used
+	for a numeric codepage.
+
+2006-06-11 John Elliott
+
+	* Example 'Fonts' directory added, showing examples of use.
+	* codepages: Made the POSIX version capable of reading the .CP2
+	files used by the DOS version, and of directly reading Unicode
+	mapping tables in the .txt and .uni formats. This makes it possible
+	to have user-created codepages.
+	* codepages: Added page2cp2, which writes files in .CP2 format,
+	either from a builtin codepage or from a .txt / .uni file.
+
+2006-05-31 John Elliott
+
+	* codepages: The generation program reacted badly to hyphens in 
+	comments, causing several of the codepages (AMSTRAD, CP737, 
+	CP850, CP858, CP863, CP865, CP866, PCGEM) to omit characters. 
+	Corrected. 
+
+2006-03-13 John Elliott
+
+	* loadpsf: Added support for Hercules Graphics Card Plus, which can
+	load up to 3072 8x14 characters. At the same time, allowed it
+	to load up to 2048 characters into a VGA, though there is
+	little practical use for either of these.
+
+2006-02-26 John Elliott
+
+	* psftools-1.0.3 released.
+
+2006-02-25 John Elliott
+
+	* cpi2psf: Made the --codepage option behave like --codepage in 
+	other tools, so that when a codepage is extracted the characters in 
+	it are in the same order as in the source file.
+	* psfxform: Added --scale and --inverse options.
+	* psfxform: Rewrote the character conversion engine. Added --centre
+	option and support for applying options only to ranges of characters, 
+	because you might want --repeat only to apply to graphics, for example.
+
+2005-12-13 John Elliott
+
+	* psftools-1.0.2 released.
+	* psfxform: Added --double and --repeat options.
+	* fnts2fon: MS-DOS version can use '_' instead of ' ' in the 
+	   --fontid option.
+	* codepages: Modified the maps for codepages 850,865,866 and 737 
+	   so that character 0 maps to U+0000, not U+FFFD.
+
+2005-10-31 John Elliott
+
+	* Created four new codepages for the Amstrad PPC512 character ROM.
+	 The standard codepages aren't quite suitable for converting this
+	 ROM to a PSF, as they conflate different characters.  
+
+2005-10-30 John Elliott
+
+	* psftools-1.0.1 released.
+
+2005-10-28 John Elliott
+	
+	* Created Makefiles for compiling under 16- and 32- bit DOS.
+	* 16-bit DOS can't keep all the codepages loaded at the same 
+	 time, so in that version codepages are loaded as required.
+
+2005-10-15 John Elliott
+
+	* Redesigned the codepage tables to support multiple Unicode 
+	 characters per glyph.
+	* psfremap replaced by psfxform, which can do all kinds of 
+	 extra things.
+	* Added psfmerge (merge two Unicode PSFs) and psfjoin (concatenate
+	 two non-Unicode PSFs)
+	* psf2zx and zx2psf now support additional formats - raw, tap,
+	 ROM and sna.
+	* All (or nearly all) psf2* programs now take a --codepage option
+	 allowing a given codepage to be extracted from a Unicode PSF.
+
+2005-10-07 John Elliott
+
+	* Fixed a bug in psf_unicode_delete() which caused it to enter an
+	 infinite loop.
+	* Added CPI library and CPI utilities (cpi2psf, psfs2cpi, cpicomp, 
+	 cpidcomp)
+	* Added psf_unicode_lookup() so single characters can be found by 
+	 their Unicode ID.
+
+2004-06-04 John Elliott
+
+	* Added support for Hercules WriteOn (.wof) format.
+
+2003-11-28 John Elliott
+
+	* psftools-0.9.9 released.

@@ -1,0 +1,86 @@
+.\" -*- nroff -*-
+.\"
+.\" psf2vfont.1: psf2vfont man page
+.\" Copyright (c) 2005, 2007, 2021 John Elliott
+.\"
+.\"
+.\"
+.\" psftools: Manipulate console fonts in the .PSF format
+.\" Copyright (C) 2005, 2007, 2021  John Elliott
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.TH psf2vfont 1 "22 January, 2020" "Version 1.1.1" "PSF Tools"
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH NAME
+psf2vfont - convert a PC Screen Font file to a BSD vfont
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SYNOPSIS
+.PD 0
+.B psf2vfont
+.RI [ "--v1" ]
+.RI [ "--v2" ]
+.RI [ "--big-endian" ]
+.RI [ "--basepoint=x,y" ]
+.RI [ INPUTFILE 
+.RI [ OUTPUTFILE ]]
+.P
+.PD 1
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH DESCRIPTION
+psf2vfont converts a font in the .PSF format to the BSD vfont(5) format.
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH OPTIONS
+.B --v1
+Output in the original vfont(5) format. This is subject to the limitations
+of the format: At most 256 characters, at most 127x127 pixels per character,
+and no Unicode directory.
+.TP
+.B --v2
+Output in vfont2(5) format. This allows more characters, larger bitmaps,
+and Unicode, but is currently supported by psftools utilities.
+.TP
+.B --big-endian
+When writing in the original vfont format, create a big-endian file 
+(suitable for platforms such as SunOS).
+.TP
+.B --basepoint=x,y
+In a vfont each character has a basepoint, and when characters are printed 
+the basepoints are used to align them. By default this will be calculated 
+as the bottom left-hand corner of character 65 (capital A). This option 
+allows it to be set manually.
+.\"
+.\"------------------------------------------------------------------
+.\"
+.\" .SH BUGS
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SEE ALSO
+vfont2psf(1)
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH AUTHOR
+John Elliott <seasip.webmaster@gmail.com>.
+.PP

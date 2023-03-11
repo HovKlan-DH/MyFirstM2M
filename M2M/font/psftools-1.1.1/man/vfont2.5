@@ -1,0 +1,181 @@
+.\" -*- nroff -*-
+.\"
+.\" vfont2.5: vfont2 man page
+.\" Copyright (c) 2021 John Elliott
+.\"
+.\"
+.\"
+.\" psftools: Manipulate console fonts in the .PSF format
+.\" Copyright (C) 2002, 2021  John Elliott <seasip.webmaster@gmail.com>
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.TH vfont2 5 "22 January, 2021" "Version 1.1.1" "PSF Tools"
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH NAME
+vfont2 - variable-size font format
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SYNOPSIS
+.B /usr/lib/vfont/\(**
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH DESCRIPTION
+vfont2 is an attempt to overcome the limitations of the original 
+vfont(5) file format to support more than 256 characters, larger
+characters, and Unicode.
+The header has the following format:
+.in +5
+.nf
+.sp
+
+#define VFONT2_MAGIC0 0x27
+#define VFONT2_MAGIC1 0x5b
+#define VFONT2_MAGIC2 0xA4
+#define VFONT2_MAGIC3 0x68
+
+/* bits used in flags */
+#define VFONT2_HAS_UNICODE_TABLE 0x01
+
+/* max version recognized so far */
+#define VFONT2_MAXVERSION 0
+
+/* UTF8 separators */
+#define VFONT2_SEPARATOR  0xFF
+#define VFONT2_STARTSEQ   0xFE
+
+struct vfont2_header {
+        unsigned char magic[4];
+        unsigned int version;
+        unsigned int headersize;    /* offset of dispatch table */
+        unsigned int flags;
+        unsigned int length;        /* number of glyphs */
+        unsigned int bitmap_size;   /* total number of bytes for bitmaps */
+        unsigned int max_height;    /* max size of a character bitmap */
+	unsigned int max_width; 
+};
+.fi
+.in -5
+.PP 
+Compared to an original vfont file, the "unused" 
+.I xtend 
+field has no counterpart. If an extension to the header is required, it would be straightforward to increase headersize and add the extra field(s).
+
+.PP 
+At offset 
+.I headersize 
+in the file is the dispatch table. This has 
+.I length 
+entries, each 18 bytes long.
+.in +5
+.nf
+.sp
+struct vfont2_dispatch {
+	unsigned int addr;	    /* offset of glyph from start of bitmaps */
+	unsigned int size;          /* number of bytes (0 if no glyph) */
+	signed short up;	    /* number of rows above baseline point */
+	signed short down;	    /* number of rows below baseline point */
+	signed short left;	    /* number of columns left of baseline point */
+	signed short right;	    /* number of columns right of baseline point */
+	signed short width;         /* logical width, used by troff */
+};
+.fi
+.in -5
+.PP 
+The number of lines present in the bitmap is 
+.I up
++
+.I down. 
+Similarly, the number of columns is 
+.I left
++
+.I right.
+.PP
+Provided the total height and width remain positive, any of 
+.I up, down, left 
+or 
+.I right 
+can be negative. This corresponds to a baseline point outside the character 
+bitmap.
+.PP 
+The logical width is used when rendering the characters; it gives the number 
+of pixels between one character's baseline point and the next.
+.PP
+The bitmaps immediately follow the dispatch table. For each character, 
+there are 
+.I up
++
+.I down 
+rows, each ((
+.I left
++
+.I right
+) + 7) / 8 bytes. 
+.PP
+If a Unicode table is present, it will immediately follow the bitmaps. It is in the same format as PSF2:
+
+.in +5
+.nf
+.sp
+<unicodedescription> := <uc>*<seq>*<term>
+<seq> := <ss><uc><uc>*
+<ss> := 0xFE
+<term> := 0xFF
+.fi
+.in -5
+.PP 
+
+where 
+.I <uc> 
+is a Unicode value coded in UTF-8, and 
+.I * 
+denotes zero or more occurrences of the preceding item. 
+.PP 
+The leading 
+.I <uc>* 
+part gives Unicode symbols that are all represented by this font position. 
+The following sequences are sequences of Unicode symbols — probably a symbol 
+together with combining accents — also represented by this font position.
+.PP
+For example, at the font position for a capital A-ring glyph, the Unicode 
+sequence may be:
+.in +5
+.nf
+.sp
+
+c3 85 e2 84 ab fe 41 cc 8a ff
+.fi
+.in -5
+.PP 
+The first six bytes correspond to two Unicode characters 
+(U+00C5 LATIN CAPITAL LETTER A WITH RING ABOVE and U+212B ANGSTROM SIGN). 
+Then 0xfe acts as a separator, and the next three bytes correspond to the 
+two Unicode characters U+0041 LATIN CAPITAL LETTER A and U+030A COMBINING 
+RING ABOVE.
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SEE ALSO
+vfont(5), psf2vfont(1), vfont2psf(1), txt2vfont(1), vfont2txt(1), vfont2ppm(1)
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH AUTHOR
+John Elliott <seasip.webmaster@gmail.com>.
+.PP

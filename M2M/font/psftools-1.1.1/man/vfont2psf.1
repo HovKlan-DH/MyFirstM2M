@@ -1,0 +1,83 @@
+.\" -*- nroff -*-
+.\"
+.\" vfont2psf.1: vfont2psf man page
+.\" Copyright (c) 2005, 2007, 2021 John Elliott
+.\"
+.\"
+.\"
+.\" psftools: Manipulate console fonts in the .PSF format
+.\" Copyright (C) 2005, 2007, 2021  John Elliott
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.TH vfont2psf 1 "22 January, 2020" "Version 1.1.1" "PSF Tools"
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH NAME
+vfont2psf - convert a BSD vfont file to a PC Screen Font 
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SYNOPSIS
+.PD 0
+.B vfont2psf
+.RI [ "--psf1" ]
+.RI [ "--psf2" ]
+.RI [ "--align" ]
+.RI [ INPUTFILE 
+.RI [ OUTPUTFILE ]]
+.P
+.PD 1
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH DESCRIPTION
+vfont2psf converts a font in the BSD vfont(5) format to the PC Screen
+Font format.
+.LP 
+Since characters in a vfont can be of variable size, and PSF is a fixed-size
+format, all characters will be increased to the size of the largest character
+in the file.
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH OPTIONS
+.B --psf1
+Output in PSF version 1 format.
+.TP
+.B --v2
+Output in PSF version 2 format.
+.TP
+.B --align
+In a vfont each character has a basepoint, and when characters are printed 
+the basepoints are used to align them. If this option is present, the 
+character bitmaps are moved so that they align correctly; this may further
+increase the size of bitmaps compared to when the option is not used.
+.\"
+.\"------------------------------------------------------------------
+.\"
+.\" .SH BUGS
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SEE ALSO
+psf2vfont(1)
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH AUTHOR
+John Elliott <seasip.webmaster@gmail.com>.
+.PP

@@ -1,0 +1,84 @@
+.\" -*- nroff -*-
+.\"
+.\" vfont2txt.1: vfont2txt man page
+.\" Copyright (c) 2005, 2007, 2021 John Elliott
+.\"
+.\"
+.\"
+.\" psftools: Manipulate console fonts in the .PSF format
+.\" Copyright (C) 2005, 2007, 2021  John Elliott
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.TH vfont2txt 1 "22 January, 2020" "Version 1.1.1" "PSF Tools"
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH NAME
+vfont2txt - convert a BSD vfont file to text
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SYNOPSIS
+.PD 0
+.B vfont2txt
+.RI [ INPUTFILE 
+.RI [ OUTPUTFILE ]]
+.P
+.PD 1
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH DESCRIPTION
+.LP 
+vfont2txt converts a font in the vfont(5) format to a human-readable 
+textual format. The resulting file can be edited manually and
+later converted back using txt2vfont(1).
+.LP
+The file format used is as documented under txt2vfont(1). When character 
+bitmaps are output, the location of the baseline point is marked with 
+an 'O' (blank) or '@' (dot) character, with '=' marking the horizontal 
+position of the baseline and '|' the corresponding vertical. When the file
+is parsed by txt2vfont(1) the location of the 'O' or '@' (if present) will 
+be checked against the 'Left' and 'Up' values that locate the baseline point,
+and a warning issued if they differ.
+.LP
+The header of the file will include three purely notational fields:
+.I BitmapLength
+,
+.I MaxWidth
+and
+.I
+MaxHeight
+\. These are ignored by txt2vfont(1). 
+.\"
+.\"------------------------------------------------------------------
+.\"
+.\".SH OPTIONS
+.\"
+.\"------------------------------------------------------------------
+.\"
+.\".SH BUGS
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH SEE ALSO
+txt2vfont(1), psf2txt(1) txt2psf(1)
+.\"
+.\"------------------------------------------------------------------
+.\"
+.SH AUTHOR
+John Elliott <seasip.webmaster@gmail.com>.
+.PP

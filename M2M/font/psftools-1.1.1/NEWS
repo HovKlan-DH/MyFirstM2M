@@ -1,0 +1,6 @@
+What's new in psftools-1.0.12:
+
+	* fnt2psf: Changed the Windows 1.x font extract to seek to the
+	 character bitmap rather than assuming it directly follows the
+	 widths table. 
+

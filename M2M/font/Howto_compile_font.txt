@@ -1,0 +1,33 @@
+
+Get font from https://github.com/k80w/consolefonts
+	Must (for now) be 256 characters and square 16x16, as this is hard-coded
+
+Convert PSF to TXT (optional, just to see it)
+	psftools-1.1.1/tools/psf2txt Anikki-16x16-m2m.psf Anikki-16x16-m2m.txt
+
+Convert TXT o PSF (optional)
+	psftools-1.1.1/tools/txt2psf Anikki-16x16-m2m.txt Anikki-16x16-m2m.psf
+
+Convert PSF to include H file
+	psftools-1.1.1/tools/psf2inc Anikki-16x16-m2m.psf Anikki-16x16-m2m.h
+
+Edit include file and make format identical to Anikki-16x16-m2m.h and make sure FONT_SIZE is exchanged with real number
+	sublime Anikki-16x16-m2m.h
+
+Copy source file
+	cp Anikki-16x16-m2m.c Anikki-16x16-m2m.c
+
+Edit source and correct file names (2 places)
+	joe Anikki-16x16-m2m.c
+
+Compile source to get executeable for ROM file
+	gcc Anikki-16x16-m2m.c -o Anikki-16x16-m2m
+
+Run executable that will create the ROM file
+	./Anikki-16x16-m2m
+	ls -l Anikki-16x16-m2m.rom
+
+Edit VHDL file and search for "font"
+	sublime CORE\vhdl\globals.vhd
+
+Do a new VHDL compile and check :-)
