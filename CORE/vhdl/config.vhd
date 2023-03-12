@@ -17,7 +17,7 @@
 -- Keyboard repeat delay
 -- M2M$TYPEMATIC_DLY
 --
--- Chars from 0-255:
+-- Chars from 1-254 (0, 255 and " excluded):
 --   "☺☻♥♦♣♠•◘○◙♂♀♪♫☼\n" &
 --   "►◄↕‼¶§▬↨↑↓→←∟↔▲▼\n" &
 --   " !#$%&'()*+,-./\n" &
@@ -55,7 +55,7 @@ port (
    -- bits 27 .. 12:    select configuration data block; called "Selector" hereafter
    -- bits 11 downto 0: address the up to 4k the configuration data
    address_i   : in std_logic_vector(27 downto 0);
-   
+
    -- config data
    data_o      : out std_logic_vector(15 downto 0)
 );
@@ -74,7 +74,7 @@ constant CHR_LINE_10 : string := CHR_LINE_5 & CHR_LINE_5;
 constant CHR_LINE_50 : string := CHR_LINE_10 & CHR_LINE_10 & CHR_LINE_10 & CHR_LINE_10 & CHR_LINE_10;
 
 --------------------------------------------------------------------------------------------------------------------
--- Welcome and Help Screens (Selectors 0x1000 .. 0x1FFF) 
+-- Welcome and Help Screens (Selectors 0x1000 .. 0x1FFF)
 --------------------------------------------------------------------------------------------------------------------
 
 -- define the amount of WHS array elements: between 1 and 16
@@ -92,7 +92,7 @@ type WHS_RECORD_TYPE is record
    page_start  : WHS_INDEX_TYPE;
    page_length : WHS_INDEX_TYPE;
 end record;
-type WHS_RECORD_ARRAY_TYPE is array (0 to WHS_RECORDS - 1) of WHS_RECORD_TYPE; 
+type WHS_RECORD_ARRAY_TYPE is array (0 to WHS_RECORDS - 1) of WHS_RECORD_TYPE;
 
 -- START YOUR CONFIGURATION BELOW THIS LINE
 
@@ -101,74 +101,365 @@ type WHS_RECORD_ARRAY_TYPE is array (0 to WHS_RECORDS - 1) of WHS_RECORD_TYPE;
 --
 -- WHS array position 0 is defined as the "Welcome Screen" as controled by WELCOME_ACTIVE and WELCOME_AT_RESET.
 -- If you are not using a Welcome Screen but only Help menu items, then you need to leave WHS array pos. 0 empty.
--- 
+--
 -- WHS array position 1 and onwards is for all the Option Menu items tagged as "Help": The first one in the
 -- Options menu is WHS array pos. 1, the second one in the menu is WHS array pos. 2 and so on.
 --
 -- Maximum 16 WHS array positions: The selector's bits 11 downto 8 select the WHS array position; 0=Welcome Screen
 -- That means a maximum of 15 menu items in the Options menu can be tagged as "Help"
 -- The selector's bits 7 downto 0 are selecting the page within the WHS array, so maximum 256 pages per Welcome Screen or Help menu item
--- 
+--
 -- Within a selector's address range, address 0 is the beginning of the string itself, while address 0xFFF of the 4k
 -- window contains the amount of pages, so each zero-terminated string can be up to 4095 bytes = 4094 characters long.
 
+-- Examples on how to build characters and strings
+-- constant CHR_LINE_1  : character := character'val(196);
+-- constant CHR_LINE_5  : string := CHR_LINE_1 & CHR_LINE_1 & CHR_LINE_1 & CHR_LINE_1 & CHR_LINE_1;
+-- constant CHR_LINE_10 : string := CHR_LINE_5 & CHR_LINE_5;
+-- constant CHR_LINE_50 : string := CHR_LINE_10 & CHR_LINE_10 & CHR_LINE_10 & CHR_LINE_10 & CHR_LINE_10;
+
+--constant CHR_0          : character := character'val(0);
+constant CHR_1          : character := character'val(1); -- ☺
+constant CHR_2          : character := character'val(2); -- ☻
+constant CHR_3          : character := character'val(3); -- ♥
+constant CHR_4          : character := character'val(4); -- ♦
+constant CHR_5          : character := character'val(5); -- ♣
+constant CHR_6          : character := character'val(6); -- ♠
+constant CHR_7          : character := character'val(7); -- •
+constant CHR_8          : character := character'val(8); -- ◘
+constant CHR_9          : character := character'val(9); -- ○
+constant CHR_10         : character := character'val(10); -- ◙
+constant CHR_11         : character := character'val(11); -- ♂
+constant CHR_12         : character := character'val(12); -- ♀
+constant CHR_13         : character := character'val(13); -- ♪
+constant CHR_14         : character := character'val(14); -- ♫
+constant CHR_15         : character := character'val(15); -- ☼
+constant CHR_16         : character := character'val(16); -- ►
+constant CHR_17         : character := character'val(17); -- ◄
+constant CHR_18         : character := character'val(18); -- ↕
+constant CHR_19         : character := character'val(19); -- ‼
+constant CHR_20         : character := character'val(20); -- ¶
+constant CHR_21         : character := character'val(21); -- §
+constant CHR_22         : character := character'val(22); -- ▬
+constant CHR_23         : character := character'val(23); -- ↨
+constant CHR_24         : character := character'val(24); -- ↑
+constant CHR_25         : character := character'val(25); -- ↓
+constant CHR_26         : character := character'val(26);
+constant CHR_27         : character := character'val(27);
+constant CHR_28         : character := character'val(28);
+constant CHR_29         : character := character'val(29);
+constant CHR_30         : character := character'val(30); -- ▲
+constant CHR_31         : character := character'val(31); -- ▼
+constant CHR_32         : character := character'val(32);
+constant CHR_33         : character := character'val(33);
+constant CHR_34         : character := character'val(34);
+constant CHR_35         : character := character'val(35);
+constant CHR_36         : character := character'val(36);
+constant CHR_37         : character := character'val(37);
+constant CHR_38         : character := character'val(38);
+constant CHR_39         : character := character'val(39);
+constant CHR_40         : character := character'val(40);
+constant CHR_41         : character := character'val(41);
+constant CHR_42         : character := character'val(42);
+constant CHR_43         : character := character'val(43);
+constant CHR_44         : character := character'val(44);
+constant CHR_45         : character := character'val(45);
+constant CHR_46         : character := character'val(46);
+constant CHR_47         : character := character'val(47);
+constant CHR_48         : character := character'val(48);
+constant CHR_49         : character := character'val(49);
+constant CHR_50         : character := character'val(50);
+constant CHR_51         : character := character'val(51);
+constant CHR_52         : character := character'val(52);
+constant CHR_53         : character := character'val(53);
+constant CHR_54         : character := character'val(54);
+constant CHR_55         : character := character'val(55);
+constant CHR_56         : character := character'val(56);
+constant CHR_57         : character := character'val(57);
+constant CHR_58         : character := character'val(58);
+constant CHR_59         : character := character'val(59);
+constant CHR_60         : character := character'val(60);
+constant CHR_61         : character := character'val(61);
+constant CHR_62         : character := character'val(62);
+constant CHR_63         : character := character'val(63);
+constant CHR_64         : character := character'val(64);
+constant CHR_65         : character := character'val(65);
+constant CHR_66         : character := character'val(66);
+constant CHR_67         : character := character'val(67);
+constant CHR_68         : character := character'val(68);
+constant CHR_69         : character := character'val(69);
+constant CHR_70         : character := character'val(70);
+constant CHR_71         : character := character'val(71);
+constant CHR_72         : character := character'val(72);
+constant CHR_73         : character := character'val(73);
+constant CHR_74         : character := character'val(74);
+constant CHR_75         : character := character'val(75);
+constant CHR_76         : character := character'val(76);
+constant CHR_77         : character := character'val(77);
+constant CHR_78         : character := character'val(78);
+constant CHR_79         : character := character'val(79);
+constant CHR_80         : character := character'val(80);
+constant CHR_81         : character := character'val(81);
+constant CHR_82         : character := character'val(82);
+constant CHR_83         : character := character'val(83);
+constant CHR_84         : character := character'val(84);
+constant CHR_85         : character := character'val(85);
+constant CHR_86         : character := character'val(86);
+constant CHR_87         : character := character'val(87);
+constant CHR_88         : character := character'val(88);
+constant CHR_89         : character := character'val(89);
+constant CHR_90         : character := character'val(90);
+constant CHR_91         : character := character'val(91);
+constant CHR_92         : character := character'val(92);
+constant CHR_93         : character := character'val(93);
+constant CHR_94         : character := character'val(94);
+constant CHR_95         : character := character'val(95);
+constant CHR_96         : character := character'val(96);
+constant CHR_97         : character := character'val(97);
+constant CHR_98         : character := character'val(98);
+constant CHR_99         : character := character'val(99);
+constant CHR_100        : character := character'val(100);
+constant CHR_101        : character := character'val(101);
+constant CHR_102        : character := character'val(102);
+constant CHR_103        : character := character'val(103);
+constant CHR_104        : character := character'val(104);
+constant CHR_105        : character := character'val(105);
+constant CHR_106        : character := character'val(106);
+constant CHR_107        : character := character'val(107);
+constant CHR_108        : character := character'val(108);
+constant CHR_109        : character := character'val(109);
+constant CHR_110        : character := character'val(110);
+constant CHR_111        : character := character'val(111);
+constant CHR_112        : character := character'val(112);
+constant CHR_113        : character := character'val(113);
+constant CHR_114        : character := character'val(114);
+constant CHR_115        : character := character'val(115);
+constant CHR_116        : character := character'val(116);
+constant CHR_117        : character := character'val(117);
+constant CHR_118        : character := character'val(118);
+constant CHR_119        : character := character'val(119);
+constant CHR_120        : character := character'val(120);
+constant CHR_121        : character := character'val(121);
+constant CHR_122        : character := character'val(122);
+constant CHR_123        : character := character'val(123);
+constant CHR_124        : character := character'val(124);
+constant CHR_125        : character := character'val(125);
+constant CHR_126        : character := character'val(126);
+constant CHR_127        : character := character'val(127);
+constant CHR_128        : character := character'val(128);
+constant CHR_129        : character := character'val(129);
+constant CHR_130        : character := character'val(130);
+constant CHR_131        : character := character'val(131);
+constant CHR_132        : character := character'val(132);
+constant CHR_133        : character := character'val(133);
+constant CHR_134        : character := character'val(134);
+constant CHR_135        : character := character'val(135);
+constant CHR_136        : character := character'val(136);
+constant CHR_137        : character := character'val(137);
+constant CHR_138        : character := character'val(138);
+constant CHR_139        : character := character'val(139);
+constant CHR_140        : character := character'val(140);
+constant CHR_141        : character := character'val(141);
+constant CHR_142        : character := character'val(142);
+constant CHR_143        : character := character'val(143);
+constant CHR_144        : character := character'val(144);
+constant CHR_145        : character := character'val(145);
+constant CHR_146        : character := character'val(146);
+constant CHR_147        : character := character'val(147);
+constant CHR_148        : character := character'val(148);
+constant CHR_149        : character := character'val(149);
+constant CHR_150        : character := character'val(150);
+constant CHR_151        : character := character'val(151);
+constant CHR_152        : character := character'val(152);
+constant CHR_153        : character := character'val(153);
+constant CHR_154        : character := character'val(154);
+constant CHR_155        : character := character'val(155);
+constant CHR_156        : character := character'val(156);
+constant CHR_157        : character := character'val(157);
+constant CHR_158        : character := character'val(158);
+constant CHR_159        : character := character'val(159);
+constant CHR_160        : character := character'val(160);
+constant CHR_161        : character := character'val(161);
+constant CHR_162        : character := character'val(162);
+constant CHR_163        : character := character'val(163);
+constant CHR_164        : character := character'val(164);
+constant CHR_165        : character := character'val(165);
+constant CHR_166        : character := character'val(166);
+constant CHR_167        : character := character'val(167);
+constant CHR_168        : character := character'val(168);
+constant CHR_169        : character := character'val(169);
+constant CHR_170        : character := character'val(170);
+constant CHR_171        : character := character'val(171);
+constant CHR_172        : character := character'val(172);
+constant CHR_173        : character := character'val(173);
+constant CHR_174        : character := character'val(174);
+constant CHR_175        : character := character'val(175);
+constant CHR_176        : character := character'val(176);
+constant CHR_177        : character := character'val(177);
+constant CHR_178        : character := character'val(178);
+constant CHR_179        : character := character'val(179);
+constant CHR_180        : character := character'val(180);
+constant CHR_181        : character := character'val(181);
+constant CHR_182        : character := character'val(182);
+constant CHR_183        : character := character'val(183);
+constant CHR_184        : character := character'val(184);
+constant CHR_185        : character := character'val(185);
+constant CHR_186        : character := character'val(186);
+constant CHR_187        : character := character'val(187);
+constant CHR_188        : character := character'val(188);
+constant CHR_189        : character := character'val(189);
+constant CHR_190        : character := character'val(190);
+constant CHR_191        : character := character'val(191);
+constant CHR_192        : character := character'val(192);
+constant CHR_193        : character := character'val(193);
+constant CHR_194        : character := character'val(194);
+constant CHR_195        : character := character'val(195);
+constant CHR_196        : character := character'val(196);
+constant CHR_197        : character := character'val(197);
+constant CHR_198        : character := character'val(198);
+constant CHR_199        : character := character'val(199);
+constant CHR_200        : character := character'val(200);
+constant CHR_201        : character := character'val(201);
+constant CHR_202        : character := character'val(202);
+constant CHR_203        : character := character'val(203);
+constant CHR_204        : character := character'val(204);
+constant CHR_205        : character := character'val(205);
+constant CHR_206        : character := character'val(206);
+constant CHR_207        : character := character'val(207);
+constant CHR_208        : character := character'val(208);
+constant CHR_209        : character := character'val(209);
+constant CHR_210        : character := character'val(210);
+constant CHR_211        : character := character'val(211);
+constant CHR_212        : character := character'val(212);
+constant CHR_213        : character := character'val(213);
+constant CHR_214        : character := character'val(214);
+constant CHR_215        : character := character'val(215);
+constant CHR_216        : character := character'val(216);
+constant CHR_217        : character := character'val(217);
+constant CHR_218        : character := character'val(218); -- ┌
+constant CHR_219        : character := character'val(219);
+constant CHR_220        : character := character'val(220);
+constant CHR_221        : character := character'val(221);
+constant CHR_222        : character := character'val(222);
+constant CHR_223        : character := character'val(223);
+constant CHR_224        : character := character'val(224);
+constant CHR_225        : character := character'val(225);
+constant CHR_226        : character := character'val(226);
+constant CHR_227        : character := character'val(227);
+constant CHR_228        : character := character'val(228);
+constant CHR_229        : character := character'val(229);
+constant CHR_230        : character := character'val(230);
+constant CHR_231        : character := character'val(231);
+constant CHR_232        : character := character'val(232);
+constant CHR_233        : character := character'val(233);
+constant CHR_234        : character := character'val(234);
+constant CHR_235        : character := character'val(235);
+constant CHR_236        : character := character'val(236);
+constant CHR_237        : character := character'val(237);
+constant CHR_238        : character := character'val(238);
+constant CHR_239        : character := character'val(239);
+constant CHR_240        : character := character'val(240);
+constant CHR_241        : character := character'val(241);
+constant CHR_242        : character := character'val(242);
+constant CHR_243        : character := character'val(243);
+constant CHR_244        : character := character'val(244);
+constant CHR_245        : character := character'val(245);
+constant CHR_246        : character := character'val(246);
+constant CHR_247        : character := character'val(247);
+constant CHR_248        : character := character'val(248);
+constant CHR_249        : character := character'val(249);
+constant CHR_250        : character := character'val(250);
+constant CHR_251        : character := character'val(251);
+constant CHR_252        : character := character'val(252);
+constant CHR_253        : character := character'val(253);
+constant CHR_254        : character := character'val(254);
+constant CHR_255        : character := character'val(255);
+
+constant CHRS_1_15      : string := CHR_1 & CHR_2 & CHR_3 & CHR_4 & CHR_5 & CHR_6 & CHR_7 & CHR_8 & CHR_9 & CHR_10 & CHR_11 & CHR_12 & CHR_13 & CHR_14 & CHR_15;
+constant CHRS_16_31     : string := CHR_16 & CHR_17 & CHR_18 & CHR_19 & CHR_20 & CHR_21 & CHR_22 & CHR_23 & CHR_24 & CHR_25 & CHR_26 & CHR_27 & CHR_28 & CHR_29 & CHR_30 & CHR_31;
+constant CHRS_32_47     : string := CHR_32 & CHR_33 & CHR_34 & CHR_35 & CHR_36 & CHR_37 & CHR_38 & CHR_39 & CHR_40 & CHR_41 & CHR_42 & CHR_43 & CHR_44 & CHR_45 & CHR_46 & CHR_47;
+constant CHRS_48_63     : string := CHR_48 & CHR_49 & CHR_50 & CHR_51 & CHR_52 & CHR_53 & CHR_54 & CHR_55 & CHR_56 & CHR_57 & CHR_58 & CHR_59 & CHR_60 & CHR_61 & CHR_62 & CHR_63;
+constant CHRS_64_79     : string := CHR_64 & CHR_65 & CHR_66 & CHR_67 & CHR_68 & CHR_69 & CHR_70 & CHR_71 & CHR_72 & CHR_73 & CHR_74 & CHR_75 & CHR_76 & CHR_77 & CHR_78 & CHR_79;
+constant CHRS_80_95     : string := CHR_80 & CHR_81 & CHR_82 & CHR_83 & CHR_84 & CHR_85 & CHR_86 & CHR_87 & CHR_88 & CHR_89 & CHR_90 & CHR_91 & CHR_92 & CHR_93 & CHR_94 & CHR_95;
+constant CHRS_96_111    : string := CHR_96 & CHR_97 & CHR_98 & CHR_99 & CHR_100 & CHR_101 & CHR_102 & CHR_103 & CHR_104 & CHR_105 & CHR_106 & CHR_107 & CHR_108 & CHR_109 & CHR_110 & CHR_111;
+constant CHRS_112_127   : string := CHR_112 & CHR_113 & CHR_114 & CHR_115 & CHR_116 & CHR_117 & CHR_118 & CHR_119 & CHR_120 & CHR_121 & CHR_122 & CHR_123 & CHR_124 & CHR_125 & CHR_126 & CHR_127;
+constant CHRS_128_143   : string := CHR_128 & CHR_129 & CHR_130 & CHR_131 & CHR_132 & CHR_133 & CHR_134 & CHR_135 & CHR_136 & CHR_137 & CHR_138 & CHR_139 & CHR_140 & CHR_141 & CHR_142 & CHR_143;
+constant CHRS_144_159   : string := CHR_144 & CHR_145 & CHR_146 & CHR_147 & CHR_148 & CHR_149 & CHR_150 & CHR_151 & CHR_152 & CHR_153 & CHR_154 & CHR_155 & CHR_156 & CHR_157 & CHR_158 & CHR_159;
+constant CHRS_160_175   : string := CHR_160 & CHR_161 & CHR_162 & CHR_163 & CHR_164 & CHR_165 & CHR_166 & CHR_167 & CHR_168 & CHR_169 & CHR_170 & CHR_171 & CHR_172 & CHR_173 & CHR_174 & CHR_175;
+constant CHRS_176_191   : string := CHR_176 & CHR_177 & CHR_178 & CHR_179 & CHR_180 & CHR_181 & CHR_182 & CHR_183 & CHR_184 & CHR_185 & CHR_186 & CHR_187 & CHR_188 & CHR_189 & CHR_190 & CHR_191;
+constant CHRS_192_207   : string := CHR_192 & CHR_193 & CHR_194 & CHR_195 & CHR_196 & CHR_197 & CHR_198 & CHR_199 & CHR_200 & CHR_201 & CHR_202 & CHR_203 & CHR_204 & CHR_205 & CHR_206 & CHR_207;
+constant CHRS_208_223   : string := CHR_208 & CHR_209 & CHR_210 & CHR_211 & CHR_212 & CHR_213 & CHR_214 & CHR_215 & CHR_216 & CHR_217 & CHR_218 & CHR_219 & CHR_220 & CHR_221 & CHR_222 & CHR_223;
+constant CHRS_224_239   : string := CHR_224 & CHR_225 & CHR_226 & CHR_227 & CHR_228 & CHR_229 & CHR_230 & CHR_231 & CHR_232 & CHR_233 & CHR_234 & CHR_235 & CHR_236 & CHR_237 & CHR_238 & CHR_239;
+constant CHRS_240_255   : string := CHR_240 & CHR_241 & CHR_242 & CHR_243 & CHR_244 & CHR_245 & CHR_246 & CHR_247 & CHR_248 & CHR_249 & CHR_250 & CHR_251 & CHR_252 & CHR_253 & CHR_254 & CHR_255;
+
 constant SCR_WELCOME : string :=
 
-   "Name of the Demo Core Version 1.0\n" &
-   "MiSTer port done by Demo Author in 2022\n\n" &
+     "\n" &
+     "MiSTer2MEGA65 Demo Core\n" &
+     "\n" &
 
-   -- We are not insisting. But it would be nice if you gave us credit for MiSTer2MEGA65 by leaving these lines in
-   "Powered by MiSTer2MEGA65 Version [WIP],\n" &
-   "done by sy2002 and MJoergen in 2022\n" &
-   "\n" &
-   "\n" &
-   "\n" &
+     "-------------------------------------------\n" &
+     "CHARACTER TEST PATTERN\n" &
+     " - showing all 255 characters\n" &
+     " - charset used: modified " & CHR_34 & "Anikki-16x16" & CHR_34 & "\n" &
+     "-------------------------------------------\n" &
+     "\n" &
+     "1-15    : " & CHRS_1_15 & " (0x00 excluded)\n" &
+     "16-31   : " & CHRS_16_31 & "\n" &
+     "32-47   : " & CHRS_32_47 & "\n" &
+     "48-63   : " & CHRS_48_63 & "\n" &
+     "64-79   : " & CHRS_64_79 & "\n" &
+     "80-95   : " & CHRS_80_95 & "\n" &
+     "96-111  : " & CHRS_96_111 & "\n" &
+     "112-127 : " & CHRS_112_127 & "\n" &
+     "128-143 : " & CHRS_128_143 & "\n" &
+     "144-159 : " & CHRS_144_159 & "\n" &
+     "160-175 : " & CHRS_160_175 & "\n" &
+     "176-191 : " & CHRS_176_191 & "\n" &
+     "192-207 : " & CHRS_192_207 & "\n" &
+     "208-223 : " & CHRS_208_223 & "\n" &
+     "224-239 : " & CHRS_224_239 & "\n" &
+     "240-255 : " & CHRS_240_255 & "\n" &
+     "\n" &
 
-   " !#$%&'()*+,-./\n" &
-   "0123456789:;<=>?\n" &
-   "@ABCDEFGHIJKLMNO\n" &
-   "PQRSTUVWXYZ[\]^_\n" &
-   "`abcdefghijklmno\n" &
-   "pqrstuvwxyz{|}\n" &
-   "\n" &
-   "\n" &
-   "£$´¨§~½\n" &
-   "\n" &
-   "\n" &
+     "-------------------------------------------\n" &
+     "Powered by MiSTer2MEGA65 Version [0.9.1]\n" &
+     "Done by sy2002 and MJoergen in 2022\n" &
+     "-------------------------------------------\n" &
+     "\n" &
+     "Tweaks by MegaBeauvais, 2023\n";
 
-   "\n         Press SPACE to continue\n";
-   
 constant HELP_1 : string :=
 
    "\n Demo Core for MEGA65 Version 1\n\n" &
-   
-   " MiSTer port 2022 by YOU\n" &   
+
+   " MiSTer port 2022 by YOU\n" &
    " Powered by MiSTer2MEGA65\n\n\n" &
-      
+
    " Lorem ipsum dolor sit amet, consetetur\n" &
    " sadipscing elitr, sed diam nonumy eirmod\n" &
    " Mpor invidunt ut labore et dolore magna\n" &
    " aliquyam erat, sed diam voluptua. At vero\n" &
    " eos et accusam et justo duo.\n\n" &
-   
+
    " Dolores et ea rebum. Stet clita kasd gube\n" &
    " gren, no sea takimata sanctus est Lorem ip\n" &
    " Sed diam nonumy eirmod tempor invidunt ut\n" &
    " labore et dolore magna aliquyam era\n\n" &
-   
+
    " Cursor right to learn more.       (1 of 3)\n" &
    " Press Space to close the help screen.";
 
 constant HELP_2 : string :=
 
    "\n Demo Core for MEGA65 Version 1\n\n" &
-   
+
    " XYZ ABCDEFGH:\n\n" &
 
    " 1. ABCD EFGH\n" &
    " 2. IJK LM NOPQ RSTUVWXYZ\n" &
    " 3. 10 20 30 40 50\n\n" &
-   
+
    " a) Dolores et ea rebum\n" &
    " b) Takimata sanctus est\n" &
    " c) Tempor Invidunt ut\n" &
@@ -178,19 +469,19 @@ constant HELP_2 : string :=
    " Ut wisi enim ad minim veniam, quis nostru\n" &
    " exerci tation ullamcorper suscipit lobor\n" &
    " tis nisl ut aliquip ex ea commodo.\n\n" &
-   
+
    " Crsr left: Prev  Crsr right: Next (2 of 3)\n" &
    " Press Space to close the help screen.";
 
 constant HELP_3 : string :=
 
    "\n Help Screens\n\n" &
-   
+
    " You can have 255 screens per help topic.\n\n" &
-     
+
    " 15 topics overall.\n" &
-   " 1 menu item per topic.\n\n\n\n" &   
-   
+   " 1 menu item per topic.\n\n\n\n" &
+
    " Cursor left to go back.           (3 of 3)\n" &
    " Press Space to close the help screen.";
 
@@ -221,7 +512,7 @@ constant WHS : WHS_RECORD_ARRAY_TYPE := (
 );
 
 --------------------------------------------------------------------------------------------------------------------
--- Set start folder for file browser and specify config file for menu persistence (Selectors 0x0100 and 0x0101) 
+-- Set start folder for file browser and specify config file for menu persistence (Selectors 0x0100 and 0x0101)
 --------------------------------------------------------------------------------------------------------------------
 
 -- !!! DO NOT TOUCH !!!
@@ -241,7 +532,7 @@ constant SEL_GENERAL       : std_logic_vector(15 downto 0) := x"0110";  -- !!! D
 
 -- START YOUR CONFIGURATION BELOW THIS LINE
 
--- keep the core in RESET state after the hardware starts up and after pressing the MEGA65's reset button 
+-- keep the core in RESET state after the hardware starts up and after pressing the MEGA65's reset button
 constant RESET_KEEP        : boolean := false;
 
 -- alternative to RESET_KEEP: keep the reset line active for this amount of "QNICE loops" (see shell.asm)
@@ -270,7 +561,7 @@ constant JOY_2_AT_OSD      : boolean := false;
 -- Avalon Scaler settings (see ascal.vhd, used for HDMI output only)
 -- 0=set ascal mode (via QNICE's ascal_mode_o) to the value of the config.vhd constant ASCAL_MODE
 -- 1=do nothing, leave ascal mode alone, custom QNICE assembly code can still change it via M2M$ASCAL_MODE
---               and QNICE's CSR will be set to not automatically sync ascal_mode_i 
+--               and QNICE's CSR will be set to not automatically sync ascal_mode_i
 -- 2=keep ascal mode in sync with the QNICE input register ascal_mode_i:
 --   use this if you want to control the ascal mode for example via the Options menu
 --   where you would wire the output of certain options menu bits with ascal_mode_i
@@ -303,13 +594,13 @@ constant VD_ANTI_THRASHING_DELAY : natural := 2000;
 constant VD_ITERATION_SIZE       : natural := 100;
 
 --------------------------------------------------------------------------------------------------------------------
--- Load one or more mandatory or optional BIOS/ROMs  (Selectors 0x0200 .. 0x02FF) 
+-- Load one or more mandatory or optional BIOS/ROMs  (Selectors 0x0200 .. 0x02FF)
 --------------------------------------------------------------------------------------------------------------------
 
 -- !!! CAUTION: CURRENTLY NOT YET SUPPORTED BY THE FIRMWARE !!!
 
 --------------------------------------------------------------------------------------------------------------------
--- "Help" menu / Options menu  (Selectors 0x0300 .. 0x0307) 
+-- "Help" menu / Options menu  (Selectors 0x0300 .. 0x0307)
 --------------------------------------------------------------------------------------------------------------------
 
 -- !!! DO NOT TOUCH !!! Selectors for accessing the menu configuration data
@@ -360,7 +651,7 @@ constant OPTM_SIZE         : natural := 21;  -- amount of items including empty 
 -- We advise to use OPTM_SIZE as height, but there might be reasons for you to change it.
 constant OPTM_DX           : natural := 30;
 constant OPTM_DY           : natural := OPTM_SIZE;
-                                             
+
 constant OPTM_ITEMS        : string :=
 
    " Single Selector\n"     &
@@ -384,7 +675,7 @@ constant OPTM_ITEMS        : string :=
    " HDMI: CRT Emulation\n" &
    " HDMI: Zoom-In\n"       &
    " Audio Improvements\n";
-        
+
 -- define your own constants here and choose meaningful names
 -- make sure that your first group uses the value 1 (0 means "no menu item", such as text and line),
 -- and be aware that you can only have a maximum of 254 groups (255 means "Close Menu");
@@ -500,17 +791,17 @@ addr_decode : process(clk_i, address_i)
 begin
    index := to_integer(unsigned(address_i(11 downto 0)));
    whs_array_index := to_integer(unsigned(address_i(23 downto 20)));
-   whs_page_index  := to_integer(unsigned(address_i(19 downto 12)));   
+   whs_page_index  := to_integer(unsigned(address_i(19 downto 12)));
 
    if falling_edge(clk_i) then
-      data_o <= x"EEEE";  
-   
+      data_o <= x"EEEE";
+
       -----------------------------------------------------------------------------------
       -- Welcome & Help System: upper 4 bits of address equal SEL_WHS' upper 4 bits
       -----------------------------------------------------------------------------------
-      
+
       if address_i(27 downto 24) = SEL_WHS(15 downto 12) then
-   
+
          if  whs_array_index < WHS_RECORDS then
             if index = 4095 then
                data_o <= std_logic_vector(to_unsigned(WHS(whs_array_index).page_count, 16));
@@ -524,21 +815,21 @@ begin
                end if;
             end if;
          end if;
-         
+
       -----------------------------------------------------------------------------------
       -- All other selectors, which are 16-bit values
       -----------------------------------------------------------------------------------
-      
+
       else
 
-         case address_i(27 downto 12) is   
+         case address_i(27 downto 12) is
             when SEL_GENERAL           => data_o <= getGenConf(index);
             when SEL_DIR_START         => data_o <= str2data(DIR_START);
             when SEL_CFG_FILE          => data_o <= str2data(CFG_FILE);
             when SEL_OPTM_ITEMS        => data_o <= str2data(OPTM_ITEMS);
             when SEL_OPTM_MOUNT_STR    => data_o <= str2data(OPTM_S_MOUNT);
             when SEL_OPTM_SAVING_STR   => data_o <= str2data(OPTM_S_SAVING);
-            when SEL_OPTM_GROUPS       => data_o <= std_logic(to_unsigned(OPTM_GROUPS(index), 16)(15)) & "00" & 
+            when SEL_OPTM_GROUPS       => data_o <= std_logic(to_unsigned(OPTM_GROUPS(index), 16)(15)) & "00" &
                                                     std_logic(to_unsigned(OPTM_GROUPS(index), 16)(12)) & "0000" &
                                                     std_logic_vector(to_unsigned(OPTM_GROUPS(index), 16)(7 downto 0));
             when SEL_OPTM_STDSEL       => data_o <= x"000" & "000" & std_logic(to_unsigned(OPTM_GROUPS(index), 16)(8));
@@ -546,14 +837,14 @@ begin
             when SEL_OPTM_START        => data_o <= x"000" & "000" & std_logic(to_unsigned(OPTM_GROUPS(index), 16)(10));
             when SEL_OPTM_MOUNT_DRV    => data_o <= x"000" & "000" & std_logic(to_unsigned(OPTM_GROUPS(index), 16)(11));
             when SEL_OPTM_HELP         => data_o <= x"000" & "000" & std_logic(to_unsigned(OPTM_GROUPS(index), 16)(13));
-            when SEL_OPTM_SINGLESEL    => data_o <= x"000" & "000" & std_logic(to_unsigned(OPTM_GROUPS(index), 16)(15));      
+            when SEL_OPTM_SINGLESEL    => data_o <= x"000" & "000" & std_logic(to_unsigned(OPTM_GROUPS(index), 16)(15));
             when SEL_OPTM_ICOUNT       => data_o <= x"00" & std_logic_vector(to_unsigned(OPTM_SIZE, 8));
             when SEL_OPTM_DIMENSIONS   => data_o <= getDXDY(OPTM_DX, OPTM_DY, index);
 
-            when others                => null;         
-         end case;   
+            when others                => null;
+         end case;
       end if;
-   end if;   
+   end if;
 end process;
 
 end beh;
