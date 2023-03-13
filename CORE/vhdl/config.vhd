@@ -118,7 +118,7 @@ type WHS_RECORD_ARRAY_TYPE is array (0 to WHS_RECORDS - 1) of WHS_RECORD_TYPE;
 -- constant CHR_LINE_10 : string := CHR_LINE_5 & CHR_LINE_5;
 -- constant CHR_LINE_50 : string := CHR_LINE_10 & CHR_LINE_10 & CHR_LINE_10 & CHR_LINE_10 & CHR_LINE_10;
 
---constant CHR_0          : character := character'val(0);
+--constant CHR_0          : character := character'val(0); -- cannot be printed, as it will halt more text
 constant CHR_1          : character := character'val(1); -- ☺
 constant CHR_2          : character := character'val(2); -- ☻
 constant CHR_3          : character := character'val(3); -- ♥
@@ -144,236 +144,236 @@ constant CHR_22         : character := character'val(22); -- ▬
 constant CHR_23         : character := character'val(23); -- ↨
 constant CHR_24         : character := character'val(24); -- ↑
 constant CHR_25         : character := character'val(25); -- ↓
-constant CHR_26         : character := character'val(26);
-constant CHR_27         : character := character'val(27);
-constant CHR_28         : character := character'val(28);
-constant CHR_29         : character := character'val(29);
+constant CHR_26         : character := character'val(26); -- →
+constant CHR_27         : character := character'val(27); -- ←
+constant CHR_28         : character := character'val(28); -- ∟
+constant CHR_29         : character := character'val(29); -- ↔
 constant CHR_30         : character := character'val(30); -- ▲
 constant CHR_31         : character := character'val(31); -- ▼
-constant CHR_32         : character := character'val(32);
-constant CHR_33         : character := character'val(33);
-constant CHR_34         : character := character'val(34);
-constant CHR_35         : character := character'val(35);
-constant CHR_36         : character := character'val(36);
-constant CHR_37         : character := character'val(37);
-constant CHR_38         : character := character'val(38);
-constant CHR_39         : character := character'val(39);
-constant CHR_40         : character := character'val(40);
-constant CHR_41         : character := character'val(41);
-constant CHR_42         : character := character'val(42);
-constant CHR_43         : character := character'val(43);
-constant CHR_44         : character := character'val(44);
-constant CHR_45         : character := character'val(45);
-constant CHR_46         : character := character'val(46);
-constant CHR_47         : character := character'val(47);
-constant CHR_48         : character := character'val(48);
-constant CHR_49         : character := character'val(49);
-constant CHR_50         : character := character'val(50);
-constant CHR_51         : character := character'val(51);
-constant CHR_52         : character := character'val(52);
-constant CHR_53         : character := character'val(53);
-constant CHR_54         : character := character'val(54);
-constant CHR_55         : character := character'val(55);
-constant CHR_56         : character := character'val(56);
-constant CHR_57         : character := character'val(57);
-constant CHR_58         : character := character'val(58);
-constant CHR_59         : character := character'val(59);
-constant CHR_60         : character := character'val(60);
-constant CHR_61         : character := character'val(61);
-constant CHR_62         : character := character'val(62);
-constant CHR_63         : character := character'val(63);
-constant CHR_64         : character := character'val(64);
-constant CHR_65         : character := character'val(65);
-constant CHR_66         : character := character'val(66);
-constant CHR_67         : character := character'val(67);
-constant CHR_68         : character := character'val(68);
-constant CHR_69         : character := character'val(69);
-constant CHR_70         : character := character'val(70);
-constant CHR_71         : character := character'val(71);
-constant CHR_72         : character := character'val(72);
-constant CHR_73         : character := character'val(73);
-constant CHR_74         : character := character'val(74);
-constant CHR_75         : character := character'val(75);
-constant CHR_76         : character := character'val(76);
-constant CHR_77         : character := character'val(77);
-constant CHR_78         : character := character'val(78);
-constant CHR_79         : character := character'val(79);
-constant CHR_80         : character := character'val(80);
-constant CHR_81         : character := character'val(81);
-constant CHR_82         : character := character'val(82);
-constant CHR_83         : character := character'val(83);
-constant CHR_84         : character := character'val(84);
-constant CHR_85         : character := character'val(85);
-constant CHR_86         : character := character'val(86);
-constant CHR_87         : character := character'val(87);
-constant CHR_88         : character := character'val(88);
-constant CHR_89         : character := character'val(89);
-constant CHR_90         : character := character'val(90);
-constant CHR_91         : character := character'val(91);
-constant CHR_92         : character := character'val(92);
-constant CHR_93         : character := character'val(93);
-constant CHR_94         : character := character'val(94);
-constant CHR_95         : character := character'val(95);
-constant CHR_96         : character := character'val(96);
-constant CHR_97         : character := character'val(97);
-constant CHR_98         : character := character'val(98);
-constant CHR_99         : character := character'val(99);
-constant CHR_100        : character := character'val(100);
-constant CHR_101        : character := character'val(101);
-constant CHR_102        : character := character'val(102);
-constant CHR_103        : character := character'val(103);
-constant CHR_104        : character := character'val(104);
-constant CHR_105        : character := character'val(105);
-constant CHR_106        : character := character'val(106);
-constant CHR_107        : character := character'val(107);
-constant CHR_108        : character := character'val(108);
-constant CHR_109        : character := character'val(109);
-constant CHR_110        : character := character'val(110);
-constant CHR_111        : character := character'val(111);
-constant CHR_112        : character := character'val(112);
-constant CHR_113        : character := character'val(113);
-constant CHR_114        : character := character'val(114);
-constant CHR_115        : character := character'val(115);
-constant CHR_116        : character := character'val(116);
-constant CHR_117        : character := character'val(117);
-constant CHR_118        : character := character'val(118);
-constant CHR_119        : character := character'val(119);
-constant CHR_120        : character := character'val(120);
-constant CHR_121        : character := character'val(121);
-constant CHR_122        : character := character'val(122);
-constant CHR_123        : character := character'val(123);
-constant CHR_124        : character := character'val(124);
-constant CHR_125        : character := character'val(125);
-constant CHR_126        : character := character'val(126);
-constant CHR_127        : character := character'val(127);
-constant CHR_128        : character := character'val(128);
-constant CHR_129        : character := character'val(129);
-constant CHR_130        : character := character'val(130);
-constant CHR_131        : character := character'val(131);
-constant CHR_132        : character := character'val(132);
-constant CHR_133        : character := character'val(133);
-constant CHR_134        : character := character'val(134);
-constant CHR_135        : character := character'val(135);
-constant CHR_136        : character := character'val(136);
-constant CHR_137        : character := character'val(137);
-constant CHR_138        : character := character'val(138);
-constant CHR_139        : character := character'val(139);
-constant CHR_140        : character := character'val(140);
-constant CHR_141        : character := character'val(141);
-constant CHR_142        : character := character'val(142);
-constant CHR_143        : character := character'val(143);
-constant CHR_144        : character := character'val(144);
-constant CHR_145        : character := character'val(145);
-constant CHR_146        : character := character'val(146);
-constant CHR_147        : character := character'val(147);
-constant CHR_148        : character := character'val(148);
-constant CHR_149        : character := character'val(149);
-constant CHR_150        : character := character'val(150);
-constant CHR_151        : character := character'val(151);
-constant CHR_152        : character := character'val(152);
-constant CHR_153        : character := character'val(153);
-constant CHR_154        : character := character'val(154);
-constant CHR_155        : character := character'val(155);
-constant CHR_156        : character := character'val(156);
-constant CHR_157        : character := character'val(157);
-constant CHR_158        : character := character'val(158);
-constant CHR_159        : character := character'val(159);
-constant CHR_160        : character := character'val(160);
-constant CHR_161        : character := character'val(161);
-constant CHR_162        : character := character'val(162);
-constant CHR_163        : character := character'val(163);
-constant CHR_164        : character := character'val(164);
-constant CHR_165        : character := character'val(165);
-constant CHR_166        : character := character'val(166);
-constant CHR_167        : character := character'val(167);
-constant CHR_168        : character := character'val(168);
-constant CHR_169        : character := character'val(169);
-constant CHR_170        : character := character'val(170);
-constant CHR_171        : character := character'val(171);
-constant CHR_172        : character := character'val(172);
-constant CHR_173        : character := character'val(173);
-constant CHR_174        : character := character'val(174);
-constant CHR_175        : character := character'val(175);
-constant CHR_176        : character := character'val(176);
-constant CHR_177        : character := character'val(177);
-constant CHR_178        : character := character'val(178);
-constant CHR_179        : character := character'val(179);
-constant CHR_180        : character := character'val(180);
-constant CHR_181        : character := character'val(181);
-constant CHR_182        : character := character'val(182);
-constant CHR_183        : character := character'val(183);
-constant CHR_184        : character := character'val(184);
-constant CHR_185        : character := character'val(185);
-constant CHR_186        : character := character'val(186);
-constant CHR_187        : character := character'val(187);
-constant CHR_188        : character := character'val(188);
-constant CHR_189        : character := character'val(189);
-constant CHR_190        : character := character'val(190);
-constant CHR_191        : character := character'val(191);
-constant CHR_192        : character := character'val(192);
-constant CHR_193        : character := character'val(193);
-constant CHR_194        : character := character'val(194);
-constant CHR_195        : character := character'val(195);
-constant CHR_196        : character := character'val(196);
-constant CHR_197        : character := character'val(197);
-constant CHR_198        : character := character'val(198);
-constant CHR_199        : character := character'val(199);
-constant CHR_200        : character := character'val(200);
-constant CHR_201        : character := character'val(201);
-constant CHR_202        : character := character'val(202);
-constant CHR_203        : character := character'val(203);
-constant CHR_204        : character := character'val(204);
-constant CHR_205        : character := character'val(205);
-constant CHR_206        : character := character'val(206);
-constant CHR_207        : character := character'val(207);
-constant CHR_208        : character := character'val(208);
-constant CHR_209        : character := character'val(209);
-constant CHR_210        : character := character'val(210);
-constant CHR_211        : character := character'val(211);
-constant CHR_212        : character := character'val(212);
-constant CHR_213        : character := character'val(213);
-constant CHR_214        : character := character'val(214);
-constant CHR_215        : character := character'val(215);
-constant CHR_216        : character := character'val(216);
-constant CHR_217        : character := character'val(217);
+constant CHR_32         : character := character'val(32); --
+constant CHR_33         : character := character'val(33); -- !
+constant CHR_34         : character := character'val(34); -- "
+constant CHR_35         : character := character'val(35); -- #
+constant CHR_36         : character := character'val(36); -- $
+constant CHR_37         : character := character'val(37); -- %
+constant CHR_38         : character := character'val(38); -- &
+constant CHR_39         : character := character'val(39); -- '
+constant CHR_40         : character := character'val(40); -- (
+constant CHR_41         : character := character'val(41); -- )
+constant CHR_42         : character := character'val(42); -- *
+constant CHR_43         : character := character'val(43); -- +
+constant CHR_44         : character := character'val(44); -- ,
+constant CHR_45         : character := character'val(45); -- -
+constant CHR_46         : character := character'val(46); -- .
+constant CHR_47         : character := character'val(47); -- /
+constant CHR_48         : character := character'val(48); -- 0
+constant CHR_49         : character := character'val(49); -- 1
+constant CHR_50         : character := character'val(50); -- 2
+constant CHR_51         : character := character'val(51); -- 3
+constant CHR_52         : character := character'val(52); -- 4
+constant CHR_53         : character := character'val(53); -- 5
+constant CHR_54         : character := character'val(54); -- 6
+constant CHR_55         : character := character'val(55); -- 7
+constant CHR_56         : character := character'val(56); -- 8
+constant CHR_57         : character := character'val(57); -- 9
+constant CHR_58         : character := character'val(58); -- :
+constant CHR_59         : character := character'val(59); -- ;
+constant CHR_60         : character := character'val(60); -- <
+constant CHR_61         : character := character'val(61); -- =
+constant CHR_62         : character := character'val(62); -- >
+constant CHR_63         : character := character'val(63); -- ?
+constant CHR_64         : character := character'val(64); -- @
+constant CHR_65         : character := character'val(65); -- A
+constant CHR_66         : character := character'val(66); -- B
+constant CHR_67         : character := character'val(67); -- C
+constant CHR_68         : character := character'val(68); -- D
+constant CHR_69         : character := character'val(69); -- E
+constant CHR_70         : character := character'val(70); -- F
+constant CHR_71         : character := character'val(71); -- G
+constant CHR_72         : character := character'val(72); -- H
+constant CHR_73         : character := character'val(73); -- I
+constant CHR_74         : character := character'val(74); -- J
+constant CHR_75         : character := character'val(75); -- K
+constant CHR_76         : character := character'val(76); -- L
+constant CHR_77         : character := character'val(77); -- M
+constant CHR_78         : character := character'val(78); -- N
+constant CHR_79         : character := character'val(79); -- O
+constant CHR_80         : character := character'val(80); -- P
+constant CHR_81         : character := character'val(81); -- Q
+constant CHR_82         : character := character'val(82); -- R
+constant CHR_83         : character := character'val(83); -- S
+constant CHR_84         : character := character'val(84); -- T
+constant CHR_85         : character := character'val(85); -- U
+constant CHR_86         : character := character'val(86); -- V
+constant CHR_87         : character := character'val(87); -- W
+constant CHR_88         : character := character'val(88); -- X
+constant CHR_89         : character := character'val(89); -- Y
+constant CHR_90         : character := character'val(90); -- Z
+constant CHR_91         : character := character'val(91); -- [
+constant CHR_92         : character := character'val(92); -- \
+constant CHR_93         : character := character'val(93); -- ]
+constant CHR_94         : character := character'val(94); -- ^
+constant CHR_95         : character := character'val(95); -- _
+constant CHR_96         : character := character'val(96); -- `
+constant CHR_97         : character := character'val(97); -- a
+constant CHR_98         : character := character'val(98); -- b
+constant CHR_99         : character := character'val(99); -- c
+constant CHR_100        : character := character'val(100); -- d
+constant CHR_101        : character := character'val(101); -- e
+constant CHR_102        : character := character'val(102); -- f
+constant CHR_103        : character := character'val(103); -- g
+constant CHR_104        : character := character'val(104); -- h
+constant CHR_105        : character := character'val(105); -- i
+constant CHR_106        : character := character'val(106); -- j
+constant CHR_107        : character := character'val(107); -- k
+constant CHR_108        : character := character'val(108); -- l
+constant CHR_109        : character := character'val(109); -- m
+constant CHR_110        : character := character'val(110); -- n
+constant CHR_111        : character := character'val(111); -- o
+constant CHR_112        : character := character'val(112); -- p
+constant CHR_113        : character := character'val(113); -- q
+constant CHR_114        : character := character'val(114); -- r
+constant CHR_115        : character := character'val(115); -- s
+constant CHR_116        : character := character'val(116); -- t
+constant CHR_117        : character := character'val(117); -- u
+constant CHR_118        : character := character'val(118); -- v
+constant CHR_119        : character := character'val(119); -- w
+constant CHR_120        : character := character'val(120); -- x
+constant CHR_121        : character := character'val(121); -- y
+constant CHR_122        : character := character'val(122); -- z
+constant CHR_123        : character := character'val(123); -- {
+constant CHR_124        : character := character'val(124); -- |
+constant CHR_125        : character := character'val(125); -- }
+constant CHR_126        : character := character'val(126); -- ~
+constant CHR_127        : character := character'val(127); -- ⌂
+constant CHR_128        : character := character'val(128); -- Ç
+constant CHR_129        : character := character'val(129); -- ü
+constant CHR_130        : character := character'val(130); -- é
+constant CHR_131        : character := character'val(131); -- â
+constant CHR_132        : character := character'val(132); -- ä
+constant CHR_133        : character := character'val(133); -- à
+constant CHR_134        : character := character'val(134); -- å
+constant CHR_135        : character := character'val(135); -- ç
+constant CHR_136        : character := character'val(136); -- ê
+constant CHR_137        : character := character'val(137); -- ë
+constant CHR_138        : character := character'val(138); -- è
+constant CHR_139        : character := character'val(139); -- ï
+constant CHR_140        : character := character'val(140); -- î
+constant CHR_141        : character := character'val(141); -- ì
+constant CHR_142        : character := character'val(142); -- Ä
+constant CHR_143        : character := character'val(143); -- Å
+constant CHR_144        : character := character'val(144); -- É
+constant CHR_145        : character := character'val(145); -- æ
+constant CHR_146        : character := character'val(146); -- Æ
+constant CHR_147        : character := character'val(147); -- ô
+constant CHR_148        : character := character'val(148); -- ö
+constant CHR_149        : character := character'val(149); -- ò
+constant CHR_150        : character := character'val(150); -- û
+constant CHR_151        : character := character'val(151); -- ù
+constant CHR_152        : character := character'val(152); -- ÿ
+constant CHR_153        : character := character'val(153); -- Ö
+constant CHR_154        : character := character'val(154); -- Ü
+constant CHR_155        : character := character'val(155); -- ¢
+constant CHR_156        : character := character'val(156); -- £
+constant CHR_157        : character := character'val(157); -- ¥
+constant CHR_158        : character := character'val(158); -- ₧
+constant CHR_159        : character := character'val(159); -- ƒ
+constant CHR_160        : character := character'val(160); -- á
+constant CHR_161        : character := character'val(161); -- í
+constant CHR_162        : character := character'val(162); -- ó
+constant CHR_163        : character := character'val(163); -- ú
+constant CHR_164        : character := character'val(164); -- ñ
+constant CHR_165        : character := character'val(165); -- Ñ
+constant CHR_166        : character := character'val(166); -- ª
+constant CHR_167        : character := character'val(167); -- º
+constant CHR_168        : character := character'val(168); -- ¿
+constant CHR_169        : character := character'val(169); -- ⌐
+constant CHR_170        : character := character'val(170); -- ¬
+constant CHR_171        : character := character'val(171); -- ½
+constant CHR_172        : character := character'val(172); -- ¼
+constant CHR_173        : character := character'val(173); -- ¡
+constant CHR_174        : character := character'val(174); -- «
+constant CHR_175        : character := character'val(175); -- »
+constant CHR_176        : character := character'val(176); -- ░
+constant CHR_177        : character := character'val(177); -- ▒
+constant CHR_178        : character := character'val(178); -- ▓
+constant CHR_179        : character := character'val(179); -- │
+constant CHR_180        : character := character'val(180); -- ┤
+constant CHR_181        : character := character'val(181); -- ╡
+constant CHR_182        : character := character'val(182); -- ╢
+constant CHR_183        : character := character'val(183); -- ╖
+constant CHR_184        : character := character'val(184); -- ╕
+constant CHR_185        : character := character'val(185); -- ╣
+constant CHR_186        : character := character'val(186); -- ║
+constant CHR_187        : character := character'val(187); -- ╗
+constant CHR_188        : character := character'val(188); -- ╝
+constant CHR_189        : character := character'val(189); -- ╜
+constant CHR_190        : character := character'val(190); -- ╛
+constant CHR_191        : character := character'val(191); -- ┐
+constant CHR_192        : character := character'val(192); -- └
+constant CHR_193        : character := character'val(193); -- ┴
+constant CHR_194        : character := character'val(194); -- ┬
+constant CHR_195        : character := character'val(195); -- ├
+constant CHR_196        : character := character'val(196); -- ─
+constant CHR_197        : character := character'val(197); -- ┼
+constant CHR_198        : character := character'val(198); -- ╞
+constant CHR_199        : character := character'val(199); -- ╟
+constant CHR_200        : character := character'val(200); -- ╚
+constant CHR_201        : character := character'val(201); -- ╔
+constant CHR_202        : character := character'val(202); -- ╩
+constant CHR_203        : character := character'val(203); -- ╦
+constant CHR_204        : character := character'val(204); -- ╠
+constant CHR_205        : character := character'val(205); -- ═
+constant CHR_206        : character := character'val(206); -- ╬
+constant CHR_207        : character := character'val(207); -- ╧
+constant CHR_208        : character := character'val(208); -- ╨
+constant CHR_209        : character := character'val(209); -- ╤
+constant CHR_210        : character := character'val(210); -- ╥
+constant CHR_211        : character := character'val(211); -- ╙
+constant CHR_212        : character := character'val(212); -- ╘
+constant CHR_213        : character := character'val(213); -- ╒
+constant CHR_214        : character := character'val(214); -- ╓
+constant CHR_215        : character := character'val(215); -- ╫
+constant CHR_216        : character := character'val(216); -- ╪
+constant CHR_217        : character := character'val(217); -- ┘
 constant CHR_218        : character := character'val(218); -- ┌
-constant CHR_219        : character := character'val(219);
-constant CHR_220        : character := character'val(220);
-constant CHR_221        : character := character'val(221);
-constant CHR_222        : character := character'val(222);
-constant CHR_223        : character := character'val(223);
-constant CHR_224        : character := character'val(224);
-constant CHR_225        : character := character'val(225);
-constant CHR_226        : character := character'val(226);
-constant CHR_227        : character := character'val(227);
-constant CHR_228        : character := character'val(228);
-constant CHR_229        : character := character'val(229);
-constant CHR_230        : character := character'val(230);
-constant CHR_231        : character := character'val(231);
-constant CHR_232        : character := character'val(232);
-constant CHR_233        : character := character'val(233);
-constant CHR_234        : character := character'val(234);
-constant CHR_235        : character := character'val(235);
-constant CHR_236        : character := character'val(236);
-constant CHR_237        : character := character'val(237);
-constant CHR_238        : character := character'val(238);
-constant CHR_239        : character := character'val(239);
-constant CHR_240        : character := character'val(240);
-constant CHR_241        : character := character'val(241);
-constant CHR_242        : character := character'val(242);
-constant CHR_243        : character := character'val(243);
-constant CHR_244        : character := character'val(244);
-constant CHR_245        : character := character'val(245);
-constant CHR_246        : character := character'val(246);
-constant CHR_247        : character := character'val(247);
-constant CHR_248        : character := character'val(248);
-constant CHR_249        : character := character'val(249);
-constant CHR_250        : character := character'val(250);
-constant CHR_251        : character := character'val(251);
-constant CHR_252        : character := character'val(252);
-constant CHR_253        : character := character'val(253);
-constant CHR_254        : character := character'val(254);
-constant CHR_255        : character := character'val(255);
+constant CHR_219        : character := character'val(219); -- █
+constant CHR_220        : character := character'val(220); -- ▄
+constant CHR_221        : character := character'val(221); -- ▌
+constant CHR_222        : character := character'val(222); -- ▐
+constant CHR_223        : character := character'val(223); -- ▀
+constant CHR_224        : character := character'val(224); -- α
+constant CHR_225        : character := character'val(225); -- ß
+constant CHR_226        : character := character'val(226); -- Γ
+constant CHR_227        : character := character'val(227); -- π
+constant CHR_228        : character := character'val(228); -- Σ
+constant CHR_229        : character := character'val(229); -- σ
+constant CHR_230        : character := character'val(230); -- µ
+constant CHR_231        : character := character'val(231); -- τ
+constant CHR_232        : character := character'val(232); -- Φ
+constant CHR_233        : character := character'val(233); -- Θ
+constant CHR_234        : character := character'val(234); -- Ω
+constant CHR_235        : character := character'val(235); -- δ
+constant CHR_236        : character := character'val(236); -- ∞
+constant CHR_237        : character := character'val(237); -- φ
+constant CHR_238        : character := character'val(238); -- ε
+constant CHR_239        : character := character'val(239); -- ∩
+constant CHR_240        : character := character'val(240); -- ≡
+constant CHR_241        : character := character'val(241); -- ±
+constant CHR_242        : character := character'val(242); -- ≥
+constant CHR_243        : character := character'val(243); -- ≤
+constant CHR_244        : character := character'val(244); -- ⌠
+constant CHR_245        : character := character'val(245); -- ⌡
+constant CHR_246        : character := character'val(246); -- ÷
+constant CHR_247        : character := character'val(247); -- ≈
+constant CHR_248        : character := character'val(248); -- °
+constant CHR_249        : character := character'val(249); -- ∙
+constant CHR_250        : character := character'val(250); -- ·
+constant CHR_251        : character := character'val(251); -- √
+constant CHR_252        : character := character'val(252); -- ⁿ
+constant CHR_253        : character := character'val(253); -- ²
+constant CHR_254        : character := character'val(254); -- ■
+constant CHR_255        : character := character'val(255); --
 
 constant CHRS_1_15      : string := CHR_1 & CHR_2 & CHR_3 & CHR_4 & CHR_5 & CHR_6 & CHR_7 & CHR_8 & CHR_9 & CHR_10 & CHR_11 & CHR_12 & CHR_13 & CHR_14 & CHR_15;
 constant CHRS_16_31     : string := CHR_16 & CHR_17 & CHR_18 & CHR_19 & CHR_20 & CHR_21 & CHR_22 & CHR_23 & CHR_24 & CHR_25 & CHR_26 & CHR_27 & CHR_28 & CHR_29 & CHR_30 & CHR_31;
@@ -392,25 +392,30 @@ constant CHRS_208_223   : string := CHR_208 & CHR_209 & CHR_210 & CHR_211 & CHR_
 constant CHRS_224_239   : string := CHR_224 & CHR_225 & CHR_226 & CHR_227 & CHR_228 & CHR_229 & CHR_230 & CHR_231 & CHR_232 & CHR_233 & CHR_234 & CHR_235 & CHR_236 & CHR_237 & CHR_238 & CHR_239;
 constant CHRS_240_255   : string := CHR_240 & CHR_241 & CHR_242 & CHR_243 & CHR_244 & CHR_245 & CHR_246 & CHR_247 & CHR_248 & CHR_249 & CHR_250 & CHR_251 & CHR_252 & CHR_253 & CHR_254 & CHR_255;
 
+constant CURVED_PAIR    : string := CHR_232 & CHR_233;
+constant CURVED_LINE    : string := CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR;
+
 constant SCR_WELCOME : string :=
 
      "\n" &
-     "MiSTer2MEGA65 Demo Core\n" &
+     "          MiSTer2MEGA65 Demo Core\n" &
      "\n" &
-
-     "-------------------------------------------\n" &
+     " Powered by MiSTer2MEGA65 Version [0.9.1]\n" &
+     "    Done by sy2002 and MJoergen in 2022\n" &
+     "\n" &
+     CURVED_LINE & "\n" &
+     "\n" &
      "CHARACTER TEST PATTERN\n" &
      " - showing all 255 characters\n" &
      " - charset used: modified " & CHR_34 & "Anikki-16x16" & CHR_34 & "\n" &
-     "-------------------------------------------\n" &
      "\n" &
-     "1-15    : " & CHRS_1_15 & " (0x00 excluded)\n" &
-     "16-31   : " & CHRS_16_31 & "\n" &
-     "32-47   : " & CHRS_32_47 & "\n" &
-     "48-63   : " & CHRS_48_63 & "\n" &
-     "64-79   : " & CHRS_64_79 & "\n" &
-     "80-95   : " & CHRS_80_95 & "\n" &
-     "96-111  : " & CHRS_96_111 & "\n" &
+     "   1-15 : " & CHRS_1_15 & " (0x00 excluded)\n" &
+     "  16-31 : " & CHRS_16_31 & "\n" &
+     "  32-47 : " & CHRS_32_47 & "\n" &
+     "  48-63 : " & CHRS_48_63 & "\n" &
+     "  64-79 : " & CHRS_64_79 & "\n" &
+     "  80-95 : " & CHRS_80_95 & "\n" &
+     " 96-111 : " & CHRS_96_111 & "\n" &
      "112-127 : " & CHRS_112_127 & "\n" &
      "128-143 : " & CHRS_128_143 & "\n" &
      "144-159 : " & CHRS_144_159 & "\n" &
@@ -421,13 +426,8 @@ constant SCR_WELCOME : string :=
      "224-239 : " & CHRS_224_239 & "\n" &
      "240-255 : " & CHRS_240_255 & "\n" &
      "\n" &
-
-     "-------------------------------------------\n" &
-     "Powered by MiSTer2MEGA65 Version [0.9.1]\n" &
-     "Done by sy2002 and MJoergen in 2022\n" &
-     "-------------------------------------------\n" &
-     "\n" &
-     "Tweaks by MegaBeauvais, 2023\n";
+     CURVED_LINE & "\n" &
+     "       Tweaks by MegaBeauvais, 2023\n";
 
 constant HELP_1 : string :=
 

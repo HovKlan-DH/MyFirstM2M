@@ -90,21 +90,29 @@ M2M$SA_COL_TTLE_INV  .EQU 0x16   ; Title, inversed: YELLOW text on GREEN backgro
 M2M$SA_COL_SEL       .EQU 0x96   ; Selection: GREEN text on YELLOW background - dont know where this is used, so this color will catch my eye
 
 ; Special characters in font Anikki-16x16
-M2M$FC_TL           .EQU 218    ; thin top/left corner
-M2M$FC_SH           .EQU 196    ; thin straight horizontal
-M2M$FC_TR           .EQU 191    ; thin top/right corner
-M2M$FC_SV           .EQU 179    ; thin straight vertical
-M2M$FC_BL           .EQU 192    ; thin bottom/left corner
-M2M$FC_BR           .EQU 217    ; thin bottom/right corner
-M2M$FC_HE_LEFT      .EQU 195    ; thin straight horiz. line ends: left part
-M2M$FC_HE_RIGHT     .EQU 180    ; thin straight horiz. line ends: right part
-M2M$NC_SH           .EQU 196    ; normal straight horizontal
-M2M$NC_VE_LEFT      .EQU 195    ; normal vertical line end: left part
-M2M$NC_VE_RIGHT     .EQU 180    ; normal vertical line end: right part
-M2M$DIR_L           .EQU 60     ; left char for displaying a directory
-M2M$DIR_R           .EQU 62     ; right char for displaying a directory
-M2M$OPT_SEL_MULTI   .EQU 7      ; selection char for options menu: multi-sel.
-M2M$OPT_SEL_SINGLE  .EQU 251    ; ditto for single select, show a checkmark
+;M2M$FC_TL           .EQU 218     ; frame, top left corner (single)
+;M2M$FC_TR           .EQU 191     ; frame, top right corner (single)
+;M2M$FC_BL           .EQU 192     ; frame, bottom left corner (single)
+;M2M$FC_BR           .EQU 217     ; frame, bottom right corner (single)
+;M2M$FC_SH           .EQU 196     ; frame, top/bottom, straight horizontal (single)
+;M2M$FC_SV           .EQU 179     ; frame, straight vertical (single)
+;M2M$NC_VE_LEFT      .EQU 195     ; frame, separator, left vertical with horizontal line end (single)
+;M2M$NC_VE_RIGHT     .EQU 180     ; frame, separator, right vertical with horizontal line end (single)
+M2M$FC_TL           .EQU 201     ; frame, top left corner (double)
+M2M$FC_TR           .EQU 187     ; frame, top right corner (double)
+M2M$FC_BL           .EQU 200     ; frame, bottom left corner (double)
+M2M$FC_BR           .EQU 188     ; frame, bottom right corner (double)
+M2M$FC_SH           .EQU 205     ; frame, top/bottom, straight horizontal (double)
+M2M$FC_SV           .EQU 186     ; frame, straight vertical (double)
+M2M$NC_VE_LEFT      .EQU 199     ; frame, separator, left vertical with horizontal line end (double)
+M2M$NC_VE_RIGHT     .EQU 182     ; frame, separator, right vertical with horizontal line end (double)
+M2M$NC_SH           .EQU 196     ; frame, separator, straight horizontal
+M2M$FC_HE_LEFT      .EQU 3       ; frame, left side, vertical line with horizontal in middle - ??? WHERE IS THIS USED ???
+M2M$FC_HE_RIGHT     .EQU 4       ; frame, right side, vertical line with horizontal in middle - ??? WHERE IS THIS USED ???
+M2M$DIR_L           .EQU 60      ; left char for displaying a directory
+M2M$DIR_R           .EQU 62      ; right char for displaying a directory
+M2M$OPT_SEL_MULTI   .EQU 7       ; selection char for toggle-select
+M2M$OPT_SEL_SINGLE  .EQU 251     ; selection char for single-select
 
 ; ----------------------------------------------------------------------------
 ; HDMI: Avalon Scaler (ascal.vhd)

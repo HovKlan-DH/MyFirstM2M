@@ -4,6 +4,7 @@ git add file.txt	- to add file to GitHub
 git add -A			- to add ALL files
 git rm file.txt		- to delete file from GitHub
 git commit -a		- will add files and create changelog text for specific commit
+<<<<<<< HEAD
 git pull			- do this before "push", to make sure you have newest
 git push			- push changes
 
@@ -11,3 +12,8 @@ gh auth login		- reauth login to GitHub (remembers credentials) - use access tok
 
 
 aaa
+=======
+git push			- push changes
+
+gh auth login		- reauth login to GitHub (remembers credentials) - use access token
+>>>>>>> f79ca8ae0e63d555a96beff96230b743014a24c3
