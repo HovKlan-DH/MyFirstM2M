@@ -33,6 +33,7 @@ lines, but excluding frame)
   - This is where the font file (ROM) is set
 * **Anikki-16x16-m2m.txt**
   - Font file containing all 256 characters, defined pixel-by-pixel
+  - Not originally included in project, but compiled with the "psf2txt" converter
   - The text file should be converted to a PSF file and then to a C-include file (.h)
 * **sysdef.asm**
   - Menu items and colors
