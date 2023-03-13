@@ -62,7 +62,7 @@ This is how the "Help" looks like:
 And this is the menu:
 ![Help](http://howto.dk/MiSTer2MEGA65-Color-Schema/menu.jpg)
 
-MiSTer2MEGA65-Color-Schema
+MiSTer2MEGA65 Color Schema
 ==========================
 
 I have made a web color schema picker, and it is available here, http://howto.dk/MiSTer2MEGA65-Color-Schema/. This can help in finding the right color combination in the menu, which is set in the M2M\rom\sysdef.asm file.
