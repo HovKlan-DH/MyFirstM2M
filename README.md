@@ -34,7 +34,8 @@ lines, but excluding frame)
 * **Anikki-16x16-m2m.txt**
   - Font file containing all 256 characters, defined pixel-by-pixel
   - Not originally included in project, but compiled with the "psf2txt" converter
-  - The text file should be converted to a PSF file and then to a C-include file (.h)
+  - The text file should be converted to a PSF file => to a C-include file (.h) => ROM file (this is automatically done with M2M\font\build_anika.sh)
+  - Just noticed now I misspelled Anikki everywhere - well, who cares ;-)
 * **sysdef.asm**
   - Menu items and colors
   - Characters used for frame
