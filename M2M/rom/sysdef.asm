@@ -83,10 +83,8 @@ M2M$SA_FG_GREEN     .EQU 0x02
 M2M$SA_FG_BLUE      .EQU 0x01
 
 ; Screen attributes: Common bit-combinations
-;M2M$SA_COL_STD       .EQU 0x47   ; Default menu: DARK WHITE text on BLACK background
-M2M$SA_COL_STD       .EQU 0x4B   ; Default menu: DARK WHITE text on BLACK background
-;M2M$SA_COL_STD_INV   .EQU 0x78   ; Cursor line: BLACK text on DARK WHITE background
-M2M$SA_COL_STD_INV   .EQU 0xCB   ; Cursor line: BLACK text on DARK WHITE background
+M2M$SA_COL_STD       .EQU 0x47   ; Default menu: DARK WHITE text on BLACK background
+M2M$SA_COL_STD_INV   .EQU 0x78   ; Cursor line: BLACK text on DARK WHITE background
 M2M$SA_COL_TTLE      .EQU 0x46   ; Title: DARK YELLOW text on BLACK background
 M2M$SA_COL_TTLE_INV  .EQU 0x16   ; Title, inversed: YELLOW text on GREEN background - ??? where is this used ??? color will catch my eye
 M2M$SA_COL_SEL       .EQU 0x96   ; Selection: GREEN text on YELLOW background - ??? where is this used ??? color will catch my eye

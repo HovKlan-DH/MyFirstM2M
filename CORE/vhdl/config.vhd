@@ -1,41 +1,3 @@
--- Dennis' notes
---
--- /root/Xilinx/Vivado/2022.2/bin/vivado
--- ./bit2core mega65r3 CORE-R3.runs/impl_1/CORE_R3.bit MyFirstM2M V1 mfm2m.cor
---
--- OPTM_SIZE   = number of lines in menu, excluding frame
--- OPTM_DX     = number of characters in menu, excluding frame
--- 15 menues selectable
--- Font for frame is Anikki-16x16
--- https://dwarffortresswiki.org/Tileset_repository#Anikki_square_16x16.png
---
--- Changing anything in menus then check:
--- OPTM_SIZE
--- OPTM_ITEMS
--- OPTM_GROUPS
---
--- Keyboard repeat delay
--- M2M$TYPEMATIC_DLY
---
--- Chars from 1-254 (0, 255 and " excluded):
---   "☺☻♥♦♣♠•◘○◙♂♀♪♫☼\n" &
---   "►◄↕‼¶§▬↨↑↓→←∟↔▲▼\n" &
---   " !#$%&'()*+,-./\n" &
---   "0123456789:;<=>?\n" &
---   "@ABCDEFGHIJKLMNO\n" &
---   "PQRSTUVWXYZ[\]^_\n" &
---   "`abcdefghijklmno\n" &
---   "pqrstuvwxyz{|}~⌂\n" &
---   "ÇüéâäàåçêëèïîìÄÅ\n" &
---   "É¢ÆôöòûùÿÖÜ¢£¥₧ƒ\n" &
---   "áíóúñÑªº¿⌐¬½¼¡«»\n" &
---   "░▒▓│┤╡╢╖╕╣║╗╝╜╛╡\n" &
---   "└┴┬├─┼╞╟╚╔╩╦╠═╬╧\n" &
---   "╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀\n" &
---   "αßΓπΣσµτΦΘΩδ∞φε∩\n" &
---   "≡±≥≤⌠⌡÷≈°∙·√ⁿ²≤\n" &
---
-
 ----------------------------------------------------------------------------------
 -- MiSTer2MEGA65 Framework
 --
@@ -393,7 +355,7 @@ constant CHRS_224_239   : string := CHR_224 & CHR_225 & CHR_226 & CHR_227 & CHR_
 constant CHRS_240_255   : string := CHR_240 & CHR_241 & CHR_242 & CHR_243 & CHR_244 & CHR_245 & CHR_246 & CHR_247 & CHR_248 & CHR_249 & CHR_250 & CHR_251 & CHR_252 & CHR_253 & CHR_254 & CHR_255;
 
 constant CURVED_PAIR    : string := CHR_232 & CHR_233;
-constant CURVED_LINE    : string := CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR;
+constant CURVED_LINE    : string := CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CURVED_PAIR & CHR_232;
 
 constant SCR_WELCOME : string :=
 
@@ -405,9 +367,9 @@ constant SCR_WELCOME : string :=
      "\n" &
      CURVED_LINE & "\n" &
      "\n" &
-     "CHARACTER TEST PATTERN\n" &
-     " - showing all 255 characters\n" &
-     " - charset used: modified " & CHR_34 & "Anikki-16x16" & CHR_34 & "\n" &
+     " CHARACTER TEST PATTERN\n" &
+     "  - showing all 255 characters\n" &
+     "  - charset used: modified " & CHR_34 & "Anikki-16x16" & CHR_34 & "\n" &
      "\n" &
      "    1-15 : " & CHRS_1_15 & " (0x00 excluded)\n" &
      "   16-31 : " & CHRS_16_31 & "\n" &
