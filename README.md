@@ -8,7 +8,7 @@ nicely structured, so please look in there for the details.
 
 The MiSTer2MEGA65 project is done by **sy2002** and **MJoergen** and I have only tweaked their great work for the menu part (visible when pressing the HELP button) - I have no idea what the rest is doing ;-)
 
-I have listed below all my changes and how I "run it".
+I have listed below all my changes and what to modify and run.
 
 Font changes:
 * Manually modified but it is heavily based on "Anikki-16x16"
@@ -35,13 +35,13 @@ lines, but excluding frame)
   - Font file containing all 256 characters, defined pixel-by-pixel
   - Not originally included in project, but compiled with the "psf2txt" converter
   - The text file should be converted to a PSF file => to a C-include file (.h) => ROM file (this is automatically done with M2M\font\build_anika.sh)
-  - Just noticed now I misspelled Anikki everywhere - well, who cares ;-)
+  - Just noticed now, that I misspelled Anikki everywhere - well, who cares ;-)
 * **sysdef.asm**
   - Menu items and colors
   - Characters used for frame
   - Keyboard delay for repeat is M2M$TYPEMATIC_DLY
 
-Steps I do to build a new bitstream:
+Steps to build a new bitstream:
 * Modify \build_new_bitstream.sh if you want to change core name from
 "MYFirstM2M V2" (this is visible in the MEGA65 core selector)
 * Modify \CORE\vhdl\config.vhd for menu
@@ -54,6 +54,7 @@ Steps I do to build a new bitstream:
 
 Requirements:
 * Vivado 2022.2 installed - I have my setup in "Subsystem for Linux" in Windows
+  - It actually puzzled me for some time how to setup this, as I though it was not possible to view GUI stuff in this - as this is console, but it works fine. I don't remember exactly what I did, but you should enable that you can use GUI (Google is your friend here)
 
 This is how the "Help" looks like:
 ![Help](http://howto.dk/MiSTer2MEGA65-Color-Schema/help.jpg)
