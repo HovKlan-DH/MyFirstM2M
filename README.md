@@ -6,7 +6,7 @@ https://github.com/sy2002/MiSTer2MEGA65/, and my purpose here is solely to famil
 All guidance is very well-documented within the parent project and it is
 nicely structured, so please look in there for the details.
 
-The MiSTer2MEGA65 project is done by **sy2002** and **MJoergen** and I have only tweaked their great work for the menu part (visible when pressing the HELP button) - I have no idea what the rest is doing ;-)
+The MiSTer2MEGA65 project is done by [sy2002](https://github.com/sy2002) and [MJoergen](https://github.com/MJoergen) and I have only tweaked their great work for the menu part (visible when pressing the HELP button) - I have no idea what the rest is doing ;-)
 
 I have listed below all my changes and what to modify and run.
 
