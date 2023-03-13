@@ -46,6 +46,8 @@ Steps I do to build a new bitstream:
 * Modify the font file \M2M\font\Anikki-16x16-m2m.txt
 * Run \M2M\font\build_anika.sh to rebuild font
 * Run \build_new_bitstream.sh to build new bitstream - this will result in a **COR file** I can use on the MEGA65 to flash a new slot (1-7)
+  - In Vivado then click the "Generate Bitstream"
+  - When it states "Bitstream generation has already completed and is up-to-date. Re-run anyway?" then "Cancel" this and go to the "synth_1" in the "Design Runs" tab and "Reset Runs". Then click the "Generate Bitstream" again
 
 Requirements:
 * Vivado 2022.2 installed - I have my setup in "Subsystem for Linux" in Windows
