@@ -14,28 +14,33 @@ Font changes:
 * Realigned all characters for better readability
 * Changed some borders and added a new horizontal "snake" line
 
-Changes done only to these files:
+I have done changes only to these files:
 * CORE\vhdl\config.vhd
 * CORE\vhdl\globals.vhd
 * M2M\font\Anikki-16x16-m2m.txt
 * M2M\rom\sysdef.asm
 
 Files and what they do:
-* config.vhd
-** Menu list items (headlines, options and separators)
-** Menu size in characters is defined in OPTM_DX (excluding frame)
-** If changing menu list items, then update OPTM_ITEMS and OPTM_GROUPS, and make
+* **config.vhd**
+  - Menu list items (headlines, options and separators)
+  - Menu size in characters is defined in OPTM_DX (excluding frame)
+  - If changing menu list items, then update OPTM_ITEMS and OPTM_GROUPS, and make
 sure OPTM_SIZE corresponds with the actual number of lines in menu (all
 lines, but excluding frame)
-* sysdef.asm
-** Menu items and colors
-** Characters used for frame
-** Keyboard delay for repeat is M2M$TYPEMATIC_DLY
+* **globals.vhd**
+  - This is where the font file (ROM) is set
+* **Anikki-16x16-m2m.txt**
+  - Font file containing all 256 characters, defined pixel-by-pixel
+  - The text file should be converted to a PSF file and then to a C-include file (.h)
+* **sysdef.asm**
+  - Menu items and colors
+  - Characters used for frame
+  - Keyboard delay for repeat is M2M$TYPEMATIC_DLY
 
 Steps I do:
 * Modify \build_new_bitstream.sh if you want to change core name from
-"MYFirstM2M V2"
-* Modify \CORE\vhdl\config.vhd for menu 
+"MYFirstM2M V2" (this is visible in the MEGA65 core selector)
+* Modify \CORE\vhdl\config.vhd for menu
 * Modify the font file \M2M\font\Anikki-16x16-m2m.txt
 * Run \M2M\font\build_anika.sh to rebuild font
 * Run \build_new_bitstream.sh to build new bitstream
@@ -43,8 +48,13 @@ Steps I do:
 Requirements:
 * Vivado 2022.2 installed - I have my setup in "Subsystem for Linux" in Windows
 
-===
+This is how the "Help" looks like:
+![Help](http://howto.dk/MiSTer2MEGA65-Color-Schema/help.jpg)
+
+And this is the menu:
+![Help](http://howto.dk/MiSTer2MEGA65-Color-Schema/menu.jpg)
+
+MiSTer2MEGA65-Color-Schema
+==========================
 
 I have made a web color schema picker, and it is available here, http://howto.dk/MiSTer2MEGA65-Color-Schema/
-
-
