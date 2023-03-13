@@ -37,13 +37,13 @@ lines, but excluding frame)
   - Characters used for frame
   - Keyboard delay for repeat is M2M$TYPEMATIC_DLY
 
-Steps I do:
+Steps I do to build a new bitstream:
 * Modify \build_new_bitstream.sh if you want to change core name from
 "MYFirstM2M V2" (this is visible in the MEGA65 core selector)
 * Modify \CORE\vhdl\config.vhd for menu
 * Modify the font file \M2M\font\Anikki-16x16-m2m.txt
 * Run \M2M\font\build_anika.sh to rebuild font
-* Run \build_new_bitstream.sh to build new bitstream
+* Run \build_new_bitstream.sh to build new bitstream - this will result in a **COR file** I can use on the MEGA65 to flash a new slot (1-7)
 
 Requirements:
 * Vivado 2022.2 installed - I have my setup in "Subsystem for Linux" in Windows
