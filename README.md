@@ -6,19 +6,39 @@ https://github.com/sy2002/MiSTer2MEGA65/, and my purpose here is solely to famil
 All guidance is well-written within the parent project, so please look in
 there.
 
+I have listed below all my changes and how I "run it".
+
 Font changes:
 * Manually modified but it is heavily based on "Anikki-16x16"
 * Fixed a few characters, to correspond to real ASCII characters
 * Realigned all characters for better readability
 * Changed some borders and added a new horizontal "snake" line
 
-CORE\vhdl\config.vhd
-CORE\vhdl\globals.vhd
-CORE\vhdl\
-M2M\font\Anikki-16x16-m2m.txt
-M2M\rom\sysdef.asm
+Changes done only to these files:
+* CORE\vhdl\config.vhd
+* CORE\vhdl\globals.vhd
+* CORE\vhdl\
+* M2M\font\Anikki-16x16-m2m.txt
+* M2M\rom\sysdef.asm
 
----
+Files:
+* config.vhd
+** Menu size is in OPTM_DX (excluding frame)
+** If changing menu items, then update OPTM_ITEMS and OPTM_GROUPS, and make
+sure OPTM_SIZE correspond with the actual number of lines in menu
+
+Steps I do:
+* Modify \build_new_bitstream.sh if you want to change core name from
+"MYFirstM2M V2"
+* Modify \CORE\vhdl\config.vhd for menu 
+* Modify the font file \M2M\font\Anikki-16x16-m2m.txt
+* Run \M2M\font\build_anika.sh to rebuild font
+* Run \build_new_bitstream.sh to build new bitstream
+
+Requirements:
+* Vivado 2022.2 installed - I have my setup in Sub-system for Linux in Windows
+
+===
 
 I have made a web color schema picker, and it is available here, http://howto.dk/MiSTer2MEGA65-Color-Schema/
 
