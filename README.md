@@ -67,7 +67,7 @@ MiSTer2MEGA65 Color Schema
 
 I have made a web color schema picker, and it is available here, http://howto.dk/MiSTer2MEGA65-Color-Schema/. This can help in finding the right color combination in the menu, which is set in the M2M\rom\sysdef.asm file.
 
-                       --------------------------------------------------------------------------------------------
+                  ------------------------------------------------------------------------------------------
                                             ALL THE CREDIT GOES TO SY2002 AND MJOERGEN !! :-)
-                       --------------------------------------------------------------------------------------------
+                  ------------------------------------------------------------------------------------------
 
